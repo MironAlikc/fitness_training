@@ -1,0 +1,15 @@
+import 'dart:io';
+
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fitness_training/resources/resources.dart';
+
+void main() {
+  test('app_pngs assets test', () {
+    expect(File(AppPngs.calendar).existsSync(), isTrue);
+    expect(File(AppPngs.contacts).existsSync(), isTrue);
+    expect(File(AppPngs.loginPhoto).existsSync(), isTrue);
+    expect(File(AppPngs.logo).existsSync(), isTrue);
+    expect(File(AppPngs.settings).existsSync(), isTrue);
+    expect(File(AppPngs.user).existsSync(), isTrue);
+  });
+}
