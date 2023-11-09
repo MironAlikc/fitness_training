@@ -9,4 +9,5 @@ class AppPngs {
   static const String logo = 'assets/pngs/logo.png';
   static const String settings = 'assets/pngs/settings.png';
   static const String user = 'assets/pngs/user.png';
+  static const String userImage = 'assets/pngs/user_image.png';
 }

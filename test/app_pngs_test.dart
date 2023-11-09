@@ -11,5 +11,6 @@ void main() {
     expect(File(AppPngs.logo).existsSync(), isTrue);
     expect(File(AppPngs.settings).existsSync(), isTrue);
     expect(File(AppPngs.user).existsSync(), isTrue);
+    expect(File(AppPngs.userImage).existsSync(), isTrue);
   });
 }

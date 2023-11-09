@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/widgets/grid_calendar_widget.dart';
 import 'package:fitness_training/presentation/widgets/list_calendar_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +24,40 @@ class _CalendarScreenState extends State<CalendarScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Stack(
             children: [
-              ListView.builder(
-                padding: const EdgeInsets.only(top: 50),
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
-                shrinkWrap: true,
-                itemCount: 10,
-                itemBuilder: (context, index) => ListCalendarWidget(
-                  onTap: () {},
-                ),
+              Builder(
+                builder: (context) {
+                  final mediaQuery = MediaQuery.of(context);
+                  final screenWidth = mediaQuery.size.width;
+                  if (screenWidth > 600) {
+                    return GridView.builder(
+                      padding: const EdgeInsets.only(top: 50),
+                      keyboardDismissBehavior:
+                          ScrollViewKeyboardDismissBehavior.onDrag,
+                      shrinkWrap: true,
+                      itemCount: 20,
+                      itemBuilder: (context, index) => GridCalendarWidget(
+                        onTap: () {},
+                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 5,
+                        mainAxisSpacing: 0.0,
+                        crossAxisSpacing: 0.0,
+                      ),
+                    );
+                  } else {
+                    return ListView.builder(
+                      padding: const EdgeInsets.only(top: 50),
+                      keyboardDismissBehavior:
+                          ScrollViewKeyboardDismissBehavior.onDrag,
+                      shrinkWrap: true,
+                      itemCount: 10,
+                      itemBuilder: (context, index) => ListCalendarWidget(
+                        onTap: () {},
+                      ),
+                    );
+                  }
+                },
               ),
               TextField(
                 decoration: InputDecoration(

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/widgets/grid_contacts_widget.dart';
 import 'package:fitness_training/presentation/widgets/list_contacts_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class ContactsScreen extends StatefulWidget {
 
 class _ContactsScreenState extends State<ContactsScreen> {
   final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,14 +25,40 @@ class _ContactsScreenState extends State<ContactsScreen> {
         ),
         child: Stack(
           children: [
-            ListView.builder(
-              padding: const EdgeInsets.only(top: 50),
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (context, index) => ListContactsWidget(
-                onTap: () {},
-              ),
+            Builder(
+              builder: (context) {
+                final mediaQuery = MediaQuery.of(context);
+                final screenWidth = mediaQuery.size.width;
+                if (screenWidth > 600) {
+                  return GridView.builder(
+                    padding: const EdgeInsets.only(top: 50),
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    shrinkWrap: true,
+                    itemCount: 20,
+                    itemBuilder: (context, index) => GridContactsWidget(
+                      onTap: () {},
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                      mainAxisSpacing: 0.0,
+                      crossAxisSpacing: 0.0,
+                    ),
+                  );
+                } else {
+                  return ListView.builder(
+                    padding: const EdgeInsets.only(top: 50),
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    itemBuilder: (context, index) => ListContactsWidget(
+                      onTap: () {},
+                    ),
+                  );
+                }
+              },
             ),
             TextField(
               decoration: InputDecoration(

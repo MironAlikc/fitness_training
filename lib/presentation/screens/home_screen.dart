@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -39,32 +40,35 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             items: [
               BottomNavigationBarItem(
-                icon: Image.asset(
-                  AppPngs.calendar,
+                icon: SvgPicture.asset(
+                  AppSvgs.calendar,
                   width: 34,
                   height: 34,
-                  color:
+                  colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 0 ? _activeColor : _inactiveColor,
+                      BlendMode.srcIn),
                 ),
                 label: "Calendar",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset(
+                icon: SvgPicture.asset(
+                  AppSvgs.contacts,
                   width: 34,
                   height: 34,
-                  AppPngs.contacts,
-                  color:
+                  colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 1 ? _activeColor : _inactiveColor,
+                      BlendMode.srcIn),
                 ),
                 label: "Contacts",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset(
-                  AppPngs.contacts,
+                icon: SvgPicture.asset(
+                  AppSvgs.settings,
                   width: 34,
                   height: 34,
-                  color:
+                  colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 2 ? _activeColor : _inactiveColor,
+                      BlendMode.srcIn),
                 ),
                 label: "Settings",
               ),
