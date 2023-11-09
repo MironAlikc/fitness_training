@@ -29,11 +29,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
               shrinkWrap: true,
               itemCount: 10,
               itemBuilder: (context, index) => ListContactsWidget(
-                onTap: () {
-                  // AutoRouter.of(context).push(
-                  //   const ProgramRoute(),
-                  // );
-                },
+                onTap: () {},
               ),
             ),
             TextField(
