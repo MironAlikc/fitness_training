@@ -1,7 +1,17 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+// **************************************************************************
+// AutoRouterGenerator
+// **************************************************************************
+
+// ignore_for_file: type=lint
+// coverage:ignore-file
+
 part of 'router.dart';
 
 abstract class _$AppRouter extends RootStackRouter {
-  _$AppRouter();
+  // ignore: unused_element
+  _$AppRouter({super.navigatorKey});
 
   @override
   final Map<String, PageFactory> pagesMap = {
@@ -17,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ContactsScreen(),
       );
     },
+    CreateProgramRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreateProgramScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -29,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
+    ProgramRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProgramScreen(),
+      );
+    },
     SettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -39,6 +61,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SplashScreen(),
+      );
+    },
+    TableCalendarRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TableCalendarScreen(),
       );
     },
   };
@@ -73,6 +101,20 @@ class ContactsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CreateProgramScreen]
+class CreateProgramRoute extends PageRouteInfo<void> {
+  const CreateProgramRoute({List<PageRouteInfo>? children})
+      : super(
+          CreateProgramRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateProgramRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -101,6 +143,20 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProgramScreen]
+class ProgramRoute extends PageRouteInfo<void> {
+  const ProgramRoute({List<PageRouteInfo>? children})
+      : super(
+          ProgramRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProgramRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [SettingsScreen]
 class SettingsRoute extends PageRouteInfo<void> {
   const SettingsRoute({List<PageRouteInfo>? children})
@@ -124,6 +180,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TableCalendarScreen]
+class TableCalendarRoute extends PageRouteInfo<void> {
+  const TableCalendarRoute({List<PageRouteInfo>? children})
+      : super(
+          TableCalendarRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TableCalendarRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

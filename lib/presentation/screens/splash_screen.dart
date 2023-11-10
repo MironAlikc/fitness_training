@@ -29,6 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -42,19 +44,25 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                AppPngs.logo,
-                height: 125,
-                width: 125,
-              ),
+              screenWidth > 600
+                  ? Image.asset(
+                      AppPngs.logo,
+                      height: 230,
+                      width: 230,
+                    )
+                  : Image.asset(
+                      AppPngs.logo,
+                      height: 130,
+                      width: 130,
+                    ),
               const SizedBox(height: 50),
-              const Text(
+              Text(
                 "NEW ELEMENT",
-                style: AppFonts.w800s38,
+                style: screenWidth > 600 ? AppFonts.w800s62 : AppFonts.w800s38,
               ),
-              const Text(
+              Text(
                 "TRAINING",
-                style: AppFonts.w600s34,
+                style: screenWidth > 600 ? AppFonts.w600s55 : AppFonts.w600s34,
               ),
             ],
           ),

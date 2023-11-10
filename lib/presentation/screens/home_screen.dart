@@ -27,9 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       builder: (context, child) {
         final tabRouter = AutoTabsRouter.of(context);
+        final mediaQuery = MediaQuery.of(context);
+        final screenWidth = mediaQuery.size.width;
         return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
+            selectedFontSize: screenWidth > 600 ? 28 : 16,
             currentIndex: tabRouter.activeIndex,
             onTap: (index) => _openPage(index, tabRouter),
             backgroundColor: Colors.white,
@@ -42,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   AppSvgs.calendar,
-                  width: 34,
-                  height: 34,
+                  width: screenWidth > 600 ? 60 : 34,
+                  height: screenWidth > 600 ? 60 : 34,
                   colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 0 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),
@@ -53,8 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   AppSvgs.contacts,
-                  width: 34,
-                  height: 34,
+                  width: screenWidth > 600 ? 60 : 34,
+                  height: screenWidth > 600 ? 60 : 34,
                   colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 1 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),
@@ -64,8 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   AppSvgs.settings,
-                  width: 34,
-                  height: 34,
+                  width: screenWidth > 600 ? 60 : 34,
+                  height: screenWidth > 600 ? 60 : 34,
                   colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 2 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),

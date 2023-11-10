@@ -20,18 +20,20 @@ class _LoginScreenState extends State<LoginScreen> {
   String? errorText;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset(
-              AppPngs.loginPhoto,
-            ),
+            screenWidth > 600
+                ? Image.asset(AppPngs.loginPhotoTable)
+                : Image.asset(AppPngs.loginPhoto),
             const SizedBox(height: 60),
-            const Text(
+            Text(
               "Log In",
-              style: AppFonts.w800s28,
+              style: screenWidth > 600 ? AppFonts.w800s40 : AppFonts.w800s28,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),

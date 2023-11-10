@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/presentation/widgets/grid_contacts_widget.dart';
 import 'package:fitness_training/presentation/widgets/list_contacts_widget.dart';
+import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -37,7 +38,11 @@ class _ContactsScreenState extends State<ContactsScreen> {
                     shrinkWrap: true,
                     itemCount: 20,
                     itemBuilder: (context, index) => GridContactsWidget(
-                      onTap: () {},
+                      onTap: () {
+                        AutoRouter.of(context).push(
+                          const ProgramRoute(),
+                        );
+                      },
                     ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -54,7 +59,11 @@ class _ContactsScreenState extends State<ContactsScreen> {
                     shrinkWrap: true,
                     itemCount: 10,
                     itemBuilder: (context, index) => ListContactsWidget(
-                      onTap: () {},
+                      onTap: () {
+                        AutoRouter.of(context).push(
+                          const ProgramRoute(),
+                        );
+                      },
                     ),
                   );
                 }

@@ -1,3 +1,4 @@
+import 'package:fitness_training/presentation/themes/theme.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +18,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      title: 'Fitness Training',
+      theme: appTheme,
       routerConfig: _appRouter.config(),
     );
   }

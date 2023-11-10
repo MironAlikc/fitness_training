@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/grid_calendar_widget.dart';
 import 'package:fitness_training/presentation/widgets/list_calendar_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
+import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -18,18 +20,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController();
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Stack(
             children: [
-              Builder(
-                builder: (context) {
-                  final mediaQuery = MediaQuery.of(context);
-                  final screenWidth = mediaQuery.size.width;
-                  if (screenWidth > 600) {
-                    return GridView.builder(
+              screenWidth > 600
+                  ? GridView.builder(
                       padding: const EdgeInsets.only(top: 50),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
@@ -44,9 +44,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         mainAxisSpacing: 0.0,
                         crossAxisSpacing: 0.0,
                       ),
-                    );
-                  } else {
-                    return ListView.builder(
+                    )
+                  : ListView.builder(
                       padding: const EdgeInsets.only(top: 50),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
@@ -55,28 +54,24 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       itemBuilder: (context, index) => ListCalendarWidget(
                         onTap: () {},
                       ),
-                    );
-                  }
-                },
-              ),
+                    ),
               TextField(
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     icon: Image.asset(
                       AppPngs.calendar,
-                      height: 30,
-                      width: 30,
+                      height: screenWidth > 600 ? 50 : 34,
+                      width: screenWidth > 600 ? 50 : 34,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      AutoRouter.of(context).push(
+                        const TableCalendarRoute(),
+                      );
+                    },
                   ),
                   hintText: "Search",
-                  hintStyle: const TextStyle(
-                    color: Color(0xFFA3A3A3),
-                    fontSize: 18,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
+                  hintStyle:
+                      screenWidth > 600 ? AppFonts.w700s26 : AppFonts.w400s18,
                   fillColor: const Color(0xFFF2F2F2).withAlpha(235),
                   filled: true,
                   border: const OutlineInputBorder(),
