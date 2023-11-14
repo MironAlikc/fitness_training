@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
-import 'package:fitness_training/presentation/widgets/test_field_widget.dart';
+import 'package:fitness_training/presentation/widgets/text_field_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
@@ -20,18 +20,20 @@ class _LoginScreenState extends State<LoginScreen> {
   String? errorText;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset(
-              AppPngs.loginPhoto,
-            ),
+            screenWidth > 600
+                ? Image.asset(AppPngs.loginPhotoTable)
+                : Image.asset(AppPngs.loginPhoto),
             const SizedBox(height: 60),
-            const Text(
+            Text(
               "Log In",
-              style: AppFonts.w800s28,
+              style: screenWidth > 600 ? AppFonts.w800s40 : AppFonts.w800s28,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),

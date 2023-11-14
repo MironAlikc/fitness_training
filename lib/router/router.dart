@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/presentation/screens/calendar/calendar_screen.dart';
+import 'package:fitness_training/presentation/screens/calendar/table_calendar_screen.dart';
 import 'package:fitness_training/presentation/screens/contacts/contacts_screen.dart';
+import 'package:fitness_training/presentation/screens/contacts/create_program_screen.dart';
+import 'package:fitness_training/presentation/screens/contacts/program_screen.dart';
 import 'package:fitness_training/presentation/screens/home_screen.dart';
 import 'package:fitness_training/presentation/screens/login_screen.dart';
 import 'package:fitness_training/presentation/screens/settings/settings_screen.dart';
@@ -32,5 +35,8 @@ class AppRouter extends _$AppRouter {
             ),
           ],
         ),
+        AutoRoute(page: ProgramRoute.page, path: "/program"),
+        AutoRoute(page: TableCalendarRoute.page, path: "/tableCalendar"),
+        AutoRoute(page: CreateProgramRoute.page, path: "/createProgram"),
       ];
 }

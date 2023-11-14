@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -26,9 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       builder: (context, child) {
         final tabRouter = AutoTabsRouter.of(context);
+        final mediaQuery = MediaQuery.of(context);
+        final screenWidth = mediaQuery.size.width;
         return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
+            selectedFontSize: screenWidth > 600 ? 28 : 16,
             currentIndex: tabRouter.activeIndex,
             onTap: (index) => _openPage(index, tabRouter),
             backgroundColor: Colors.white,
@@ -39,32 +43,35 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             items: [
               BottomNavigationBarItem(
-                icon: Image.asset(
-                  AppPngs.calendar,
-                  width: 34,
-                  height: 34,
-                  color:
+                icon: SvgPicture.asset(
+                  AppSvgs.calendar,
+                  width: screenWidth > 600 ? 60 : 34,
+                  height: screenWidth > 600 ? 60 : 34,
+                  colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 0 ? _activeColor : _inactiveColor,
+                      BlendMode.srcIn),
                 ),
                 label: "Calendar",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset(
-                  width: 34,
-                  height: 34,
-                  AppPngs.contacts,
-                  color:
+                icon: SvgPicture.asset(
+                  AppSvgs.contacts,
+                  width: screenWidth > 600 ? 60 : 34,
+                  height: screenWidth > 600 ? 60 : 34,
+                  colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 1 ? _activeColor : _inactiveColor,
+                      BlendMode.srcIn),
                 ),
                 label: "Contacts",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset(
-                  AppPngs.contacts,
-                  width: 34,
-                  height: 34,
-                  color:
+                icon: SvgPicture.asset(
+                  AppSvgs.settings,
+                  width: screenWidth > 600 ? 60 : 34,
+                  height: screenWidth > 600 ? 60 : 34,
+                  colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 2 ? _activeColor : _inactiveColor,
+                      BlendMode.srcIn),
                 ),
                 label: "Settings",
               ),

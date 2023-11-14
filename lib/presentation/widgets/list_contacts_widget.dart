@@ -38,7 +38,7 @@ class ListContactsWidget extends StatelessWidget {
                     radius: 37,
                     backgroundColor: Colors.white,
                     backgroundImage: AssetImage(
-                      AppPngs.logo,
+                      AppPngs.userImage,
                     ),
                   ),
                   SizedBox(width: 18),

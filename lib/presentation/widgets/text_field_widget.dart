@@ -1,3 +1,4 @@
+import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -21,10 +22,13 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return SizedBox(
       width: 548,
       height: 80,
       child: TextField(
+        style: screenWidth > 600 ? AppFonts.w500s25 : AppFonts.w500s18,
         keyboardType: keyboardType,
         onChanged: onChanged,
         controller: controller,
