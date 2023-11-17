@@ -51,6 +51,19 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProgramScreen(),
       );
     },
+    SelectTrainingRoute.name: (routeData) {
+      final args = routeData.argsAs<SelectTrainingRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SelectTrainingScreen(selectedTrainers: args.selectedTrainers),
+      );
+    },
+    SettingsProgramRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingsProgramScreen(),
+      );
+    },
     SettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -152,6 +165,49 @@ class ProgramRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProgramRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SelectTrainingScreen]
+class SelectTrainingRoute extends PageRouteInfo<SelectTrainingRouteArgs> {
+  SelectTrainingRoute({
+    required List<String> selectedTrainers,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SelectTrainingRoute.name,
+          args: SelectTrainingRouteArgs(selectedTrainers: selectedTrainers),
+          initialChildren: children,
+        );
+
+  static const String name = 'SelectTrainingRoute';
+
+  static const PageInfo<SelectTrainingRouteArgs> page =
+      PageInfo<SelectTrainingRouteArgs>(name);
+}
+
+class SelectTrainingRouteArgs {
+  const SelectTrainingRouteArgs({required this.selectedTrainers});
+
+  final List<String> selectedTrainers;
+
+  @override
+  String toString() {
+    return 'SelectTrainingRouteArgs{selectedTrainers: $selectedTrainers}';
+  }
+}
+
+/// generated route for
+/// [SettingsProgramScreen]
+class SettingsProgramRoute extends PageRouteInfo<void> {
+  const SettingsProgramRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsProgramRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsProgramRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
