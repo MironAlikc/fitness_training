@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
+import 'package:fitness_training/presentation/widgets/tab_bar_training_widget.dart';
 import 'package:fitness_training/presentation/widgets/user_cart_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
@@ -45,7 +46,7 @@ class ProgramScreen extends StatelessWidget {
                 },
                 title: "Create New Program",
               ),
-              //const TabBarTrainingWidget(),
+              const TabBarTrainingWidget(),
             ],
           ),
         ),

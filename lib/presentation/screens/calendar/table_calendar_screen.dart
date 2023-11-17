@@ -66,54 +66,105 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TableCalendar(
-                  locale: "en_US",
-                  rowHeight: 43,
-                  headerStyle: const HeaderStyle(
-                    formatButtonVisible: false,
-                    titleCentered: true,
-                  ),
-                  availableGestures: AvailableGestures.all,
-                  selectedDayPredicate: (day) => isSameDay(day, today),
-                  focusedDay: today,
-                  firstDay: DateTime.utc(2010, 10, 16),
-                  lastDay: DateTime.utc(2030, 3, 14),
-                  onDaySelected: _onDaySelectedA,
-                  rangeStartDay: _rangeStart,
-                  rangeSelectionMode: RangeSelectionMode.toggledOn,
-                  onRangeSelected: _onRangeSelected,
-                  rangeEndDay: _rangeEnd,
-                  calendarStyle: const CalendarStyle(
-                    rangeHighlightColor: Colors.black,
-                    todayTextStyle: TextStyle(
-                      color: Colors.black,
-                      backgroundColor: Colors.black,
-                      decorationColor: Colors.black,
-                      decorationStyle: TextDecorationStyle.dashed,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TableCalendar(
+                locale: "en_US",
+                rowHeight: 43,
+                headerStyle: const HeaderStyle(
+                  formatButtonVisible: false,
+                  titleCentered: true,
+                ),
+                availableGestures: AvailableGestures.all,
+                selectedDayPredicate: (day) => isSameDay(day, today),
+                focusedDay: today,
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 3, 14),
+                onDaySelected: _onDaySelectedA,
+                rangeStartDay: _rangeStart,
+                rangeSelectionMode: RangeSelectionMode.toggledOn,
+                onRangeSelected: _onRangeSelected,
+                rangeEndDay: _rangeEnd,
+                daysOfWeekStyle: const DaysOfWeekStyle(
+                  weekdayStyle: const TextStyle(color: Colors.black),
+                ),
+                calendarStyle: const CalendarStyle(
+                  rangeHighlightColor: Colors.red,
+                  isTodayHighlighted: false,
+                  canMarkersOverflow: false,
+                  outsideDaysVisible: false,
+                  markersAutoAligned: false,
+                  outsideTextStyle: TextStyle(color: Colors.red),
+                  disabledTextStyle: TextStyle(color: Colors.red),
+                  holidayTextStyle: TextStyle(color: Colors.red),
+                  holidayDecoration: BoxDecoration(
+                    border: Border.fromBorderSide(
+                      BorderSide(color: Colors.red, width: 1.4),
                     ),
-                    outsideDaysVisible: false,
+                    shape: BoxShape.circle,
                   ),
-                  onFormatChanged: (format) {
-                    if (_calendarFormat != format) {
-                      _calendarFormat = format;
-                      setState(() {});
-                    }
-                  }),
-              //Spacer(),
-              SizedBox(height: 100),
-              ButtonWidget(
-                onPressed: () {},
-                title: "Show Results",
-              ),
-            ],
-          ),
+                  weekNumberTextStyle:
+                      TextStyle(fontSize: 12, color: Colors.red),
+                  weekendTextStyle: TextStyle(color: Colors.red),
+                  // todayDecoration: const BoxDecoration(
+                  //   color: Colors.red,
+                  //   shape: BoxShape.rectangle,
+                  // ),
+                  selectedTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
+                  selectedDecoration: BoxDecoration(
+                    color: Colors.green,
+                    shape: BoxShape.circle,
+                  ),
+                  rangeStartTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
+                  rangeEndDecoration: BoxDecoration(
+                    color: Colors.green,
+                    shape: BoxShape.circle,
+                  ),
+                  rangeStartDecoration: BoxDecoration(
+                    color: Colors.green,
+                    shape: BoxShape.circle,
+                  ),
+                  rangeEndTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
+                  markerDecoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                  //rangeHighlightColor: Colors.black,
+                  todayTextStyle: TextStyle(
+                    color: Colors.black,
+                    // backgroundColor: Colors.black,
+                    decorationColor: Colors.green,
+                    decorationStyle: TextDecorationStyle.dashed,
+                  ),
+                  //  outsideDaysVisible: false,
+                ),
+                onFormatChanged: (format) {
+                  if (_calendarFormat != format) {
+                    _calendarFormat = format;
+                    setState(() {});
+                  }
+                }),
+            Spacer(),
+            // const SizedBox(height: 100),
+            ButtonWidget(
+              onPressed: () {},
+              title: "Show Results",
+            ),
+            const SizedBox(height: 30),
+          ],
         ),
       ),
     );
