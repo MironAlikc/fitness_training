@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/bloc/bloc_auth/auth_bloc.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/presentation/widgets/text_field_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
@@ -57,13 +59,35 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 62),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ButtonWidget(
-                onPressed: () {
+            BlocListener<AuthBloc, AuthState>(
+              listener: (context, state) {
+                if (state is AuthSucces) {
                   AutoRouter.of(context).push(const HomeRoute());
-                },
-                title: "Log In",
+                }
+                if (state is AuthError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Center(child: Text("Error")),
+                    ),
+                    // errorText = 'Error';
+                    // setState(() {}
+                  );
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ButtonWidget(
+                  onPressed: () {
+                    BlocProvider.of<AuthBloc>(context).add(
+                      GetTokenEvent(
+                        login: controlerEmail.text,
+                        password: controlerPassword.text,
+                      ),
+                    );
+                  },
+                  title: "Log In",
+                ),
               ),
             ),
           ],
