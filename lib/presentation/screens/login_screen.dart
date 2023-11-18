@@ -20,12 +20,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController controlerEmail = TextEditingController();
   final TextEditingController controlerPassword = TextEditingController();
   String? errorText;
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           children: [
