@@ -15,6 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           username: event.login,
           password: event.password,
         );
+
         final TokenModel data = TokenModel.fromJson(result);
         emit(
           AuthSucces(model: data),
