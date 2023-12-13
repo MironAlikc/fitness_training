@@ -5,6 +5,7 @@ import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/presentation/widgets/text_field_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -61,18 +62,18 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 62),
             BlocListener<AuthBloc, AuthState>(
-              listener: (context, state) {
+              listener: (context, state) async {
                 if (state is AuthSucces) {
                   AutoRouter.of(context).push(const HomeRoute());
                 }
                 if (state is AuthError) {
+                  // errorText = 'Error';
+                  // setState(() {});
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       backgroundColor: Colors.red,
                       content: Center(child: Text("Error")),
                     ),
-                    // errorText = 'Error';
-                    // setState(() {}
                   );
                 }
               },

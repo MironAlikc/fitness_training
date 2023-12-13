@@ -294,7 +294,7 @@ class SettingsProgramScreen extends StatelessWidget {
                                     ),
                                     SizedBox(
                                       height: 52,
-                                      width: 170,
+                                      width: 150,
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor:

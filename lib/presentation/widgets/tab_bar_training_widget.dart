@@ -34,6 +34,8 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         DefaultTabController(
           initialIndex: 0,
@@ -48,6 +50,7 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
             indicatorColor: Colors.white,
             indicatorSize: TabBarIndicatorSize.tab,
             labelPadding: const EdgeInsets.all(10),
+            dividerColor: Colors.white,
             tabs: const [
               Tab(
                 height: 50,
