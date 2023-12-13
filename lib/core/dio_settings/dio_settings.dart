@@ -6,7 +6,7 @@ import "package:flutter/foundation.dart";
 
 class DioSettings {
   DioSettings() {
-    unawaited(setup());
+    setup();
   }
 
   Dio dio = Dio(

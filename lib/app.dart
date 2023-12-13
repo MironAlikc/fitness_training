@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
         ],
         child: TextFieldUnfocus(
           child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             title: 'Fitness Training',
             theme: appTheme,
             routerConfig: _appRouter.config(),
