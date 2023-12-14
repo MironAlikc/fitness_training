@@ -4,6 +4,8 @@ abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
 
+class AuthLoading extends AuthState {}
+
 class AuthError extends AuthState {
   AuthError({required this.error});
   final String error;
