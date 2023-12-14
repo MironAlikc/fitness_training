@@ -3,11 +3,11 @@ import "package:flutter/material.dart";
 class SettingsForWidget extends StatelessWidget {
   const SettingsForWidget({
     required this.text,
-    // required this.textName,
     super.key,
+    required this.controller,
   });
   final String text;
-  // final String textName;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,9 @@ class SettingsForWidget extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          child: const TextField(
-            decoration: InputDecoration(
+          child: TextField(
+            controller: controller,
+            decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
               hintText: "_",

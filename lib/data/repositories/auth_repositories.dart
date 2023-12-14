@@ -22,21 +22,9 @@ class AuthRepositories {
 
       final TokenModel tokenModel = TokenModel.fromJson(response.data);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString(AppConsts.accessToken, tokenModel.accessToken ?? "");
-
-      // Сохраняем логин и пароль после успешного получения токена
-      await saveCredentials(username, password);
-
+      await prefs.setString(
+          AppConsts.accessToken, tokenModel.accessToken ?? "");
       return response.data;
-    } catch (e) {
-      rethrow;
-    }
-  }
-  Future<void> saveCredentials(String login, String password) async {
-    try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString(AppConsts.loginKey, login);
-      await prefs.setString(AppConsts.passwordKey, password);
     } catch (e) {
       rethrow;
     }

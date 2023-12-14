@@ -40,44 +40,50 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
         DefaultTabController(
           initialIndex: 0,
           length: 2,
-          child: TabBar(
-            onTap: (value) {
-              currentTabIndex = value;
-              setState(() {});
-            },
-            labelColor: const Color(0xFF1E1E1E),
-            unselectedLabelColor: const Color(0xFFA3A3A3),
-            indicatorColor: Colors.white,
-            indicatorSize: TabBarIndicatorSize.tab,
-            labelPadding: const EdgeInsets.all(10),
-            dividerColor: Colors.white,
-            tabs: const [
-              Tab(
-                height: 50,
-                child: Text(
-                  "Current Program",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w700,
-                    height: 0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TabBar(
+                onTap: (value) {
+                  currentTabIndex = value;
+                  setState(() {});
+                },
+                labelColor: const Color(0xFF1E1E1E),
+                unselectedLabelColor: const Color(0xFFA3A3A3),
+                indicatorColor: Colors.white,
+                indicatorSize: TabBarIndicatorSize.tab,
+                labelPadding: const EdgeInsets.all(10),
+                dividerColor: Colors.white,
+                tabs: const [
+                  Tab(
+                    height: 50,
+                    child: Text(
+                      "Current Program",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Tab(
-                height: 50,
-                child: Text(
-                  "Archieve",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w500,
-                    height: 0,
+                  Tab(
+                    height: 50,
+                    child: Text(
+                      "Archieve",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w500,
+                        height: 0,
+                      ),
+                    ),
                   ),
-                ),
+                ],
+                isScrollable: true,
               ),
+              const SizedBox(height: 16),
             ],
-            isScrollable: true,
           ),
         ),
         SingleChildScrollView(child: tabItems[currentTabIndex]),

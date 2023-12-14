@@ -9,9 +9,19 @@ import "package:flutter/material.dart";
 import "package:flutter_svg/svg.dart";
 
 @RoutePage()
-class SettingsProgramScreen extends StatelessWidget {
+class SettingsProgramScreen extends StatefulWidget {
   const SettingsProgramScreen({super.key});
 
+  @override
+  State<SettingsProgramScreen> createState() => _SettingsProgramScreenState();
+}
+
+TextEditingController seatsController = TextEditingController();
+TextEditingController pinController = TextEditingController();
+TextEditingController backController = TextEditingController();
+TextEditingController weightController = TextEditingController();
+
+class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -69,7 +79,7 @@ class SettingsProgramScreen extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                     "Settings for B5 (A)",
                                   ),
-                                  content: const Column(
+                                  content: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -79,27 +89,31 @@ class SettingsProgramScreen extends StatelessWidget {
                                         children: [
                                           SettingsForWidget(
                                             text: "Seats",
+                                            controller: seatsController,
                                           ),
-                                          SizedBox(width: 20),
+                                          const SizedBox(width: 20),
                                           SettingsForWidget(
                                             text: "Pin",
+                                            controller: pinController,
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height: 10),
+                                      const SizedBox(height: 10),
                                       Row(
                                         children: [
                                           SettingsForWidget(
                                             text: "Back",
+                                            controller: backController,
                                           ),
-                                          SizedBox(width: 20),
+                                          const SizedBox(width: 20),
                                           SettingsForWidget(
                                             text: "Weight",
+                                            controller: weightController,
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height: 20),
-                                      Text(
+                                      const SizedBox(height: 20),
+                                      const Text(
                                         textAlign: TextAlign.center,
                                         "* Weight for current workout",
                                         style: TextStyle(color: Colors.black),
@@ -238,34 +252,38 @@ class SettingsProgramScreen extends StatelessWidget {
                               textAlign: TextAlign.center,
                               "Settings for B5 (A)",
                             ),
-                            content: const Column(
+                            content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Row(
                                   children: [
                                     SettingsForWidget(
+                                      controller: seatsController,
                                       text: "Seats",
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     SettingsForWidget(
                                       text: "Pin",
+                                      controller: pinController,
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Row(
                                   children: [
                                     SettingsForWidget(
                                       text: "Back",
+                                      controller: backController,
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     SettingsForWidget(
                                       text: "Weight",
+                                      controller: weightController,
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 20),
-                                Text(
+                                const SizedBox(height: 20),
+                                const Text(
                                   textAlign: TextAlign.center,
                                   "* Weight for current workout",
                                   style: TextStyle(color: Colors.black),

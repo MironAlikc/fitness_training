@@ -8,6 +8,7 @@ import 'package:fitness_training/router/router.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
@@ -23,9 +24,32 @@ class _LoginScreenState extends State<LoginScreen> {
   String? errorText;
 
   @override
+  void initState() {
+    checkSavedCredentials();
+    super.initState();
+  }
+
+  void checkSavedCredentials() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? savedLogin = prefs.getString('login');
+    String? savedPassword = prefs.getString('password');
+
+    if (savedLogin != null && savedPassword != null) {
+      // ignore: use_build_context_synchronously
+      BlocProvider.of<AuthBloc>(context).add(
+        GetTokenEvent(
+          login: savedLogin,
+          password: savedPassword,
+        ),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
+    // nameText = prefs?.getString(AppConsts.loginKey) ?? '';
     return Scaffold(
       //resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -64,11 +88,13 @@ class _LoginScreenState extends State<LoginScreen> {
             BlocListener<AuthBloc, AuthState>(
               listener: (context, state) async {
                 if (state is AuthSucces) {
-                  AutoRouter.of(context).push(const HomeRoute());
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    saveCredentials(
+                        controlerEmail.text, controlerPassword.text);
+                    AutoRouter.of(context).push(const HomeRoute());
+                  });
                 }
                 if (state is AuthError) {
-                  // errorText = 'Error';
-                  // setState(() {});
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       backgroundColor: Colors.red,
@@ -80,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ButtonWidget(
-                  onPressed: () {
+                  onPressed: () async {
                     BlocProvider.of<AuthBloc>(context).add(
                       GetTokenEvent(
                         login: controlerEmail.text,
@@ -96,5 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void saveCredentials(String login, String password) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('login', login);
+    prefs.setString('password', password);
   }
 }
