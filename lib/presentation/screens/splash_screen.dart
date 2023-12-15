@@ -1,12 +1,14 @@
 import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/core/const.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore_for_file: use_build_context_synchronously
 @RoutePage()
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,13 +20,27 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    super.initState();
+    routing();
     Timer(
       const Duration(seconds: 2),
       () => AutoRouter.of(context).push(
         const LoginRoute(),
       ),
     );
+    super.initState();
+  }
+
+  void routing() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLogined = prefs.getBool(AppConsts.isLogined) ?? false;
+    await Future.delayed(
+      const Duration(seconds: 2),
+    );
+    if (isLogined) {
+      AutoRouter.of(context).push(const HomeRoute());
+    } else {
+      AutoRouter.of(context).push(const LoginRoute());
+    }
   }
 
   @override

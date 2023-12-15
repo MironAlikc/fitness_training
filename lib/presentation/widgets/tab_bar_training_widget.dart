@@ -34,20 +34,21 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+      // crossAxisAlignment: CrossAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         DefaultTabController(
           initialIndex: 0,
           length: 2,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TabBar(
                 onTap: (value) {
                   currentTabIndex = value;
                   setState(() {});
                 },
+                tabAlignment: TabAlignment.center,
                 labelColor: const Color(0xFF1E1E1E),
                 unselectedLabelColor: const Color(0xFFA3A3A3),
                 indicatorColor: Colors.white,

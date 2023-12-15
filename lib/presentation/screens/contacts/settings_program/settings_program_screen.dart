@@ -1,12 +1,18 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "dart:async";
 import "package:auto_route/auto_route.dart";
+import "package:fitness_training/core/const.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
 import "package:fitness_training/presentation/themes/app_fonts.dart";
+import "package:fitness_training/presentation/widgets/bloc_program_widget.dart";
 import "package:fitness_training/presentation/widgets/custom_timer_widget.dart";
 import "package:fitness_training/presentation/widgets/settings_for_widget.dart";
+import "package:fitness_training/presentation/widgets/shared_prefs_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/svg.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 @RoutePage()
 class SettingsProgramScreen extends StatefulWidget {
@@ -16,12 +22,13 @@ class SettingsProgramScreen extends StatefulWidget {
   State<SettingsProgramScreen> createState() => _SettingsProgramScreenState();
 }
 
-TextEditingController seatsController = TextEditingController();
-TextEditingController pinController = TextEditingController();
-TextEditingController backController = TextEditingController();
-TextEditingController weightController = TextEditingController();
+TextEditingController controllerSeats = TextEditingController();
+TextEditingController controllerPin = TextEditingController();
+TextEditingController controllerBack = TextEditingController();
+TextEditingController controllerHandle = TextEditingController();
 
 class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
+  String? textProgram;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -88,13 +95,12 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                                       Row(
                                         children: [
                                           SettingsForWidget(
-                                            text: "Seats",
-                                            controller: seatsController,
-                                          ),
+                                              text: "Seats",
+                                              controller: controllerSeats),
                                           const SizedBox(width: 20),
                                           SettingsForWidget(
                                             text: "Pin",
-                                            controller: pinController,
+                                            controller: controllerPin,
                                           ),
                                         ],
                                       ),
@@ -103,12 +109,12 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                                         children: [
                                           SettingsForWidget(
                                             text: "Back",
-                                            controller: backController,
+                                            controller: controllerBack,
                                           ),
                                           const SizedBox(width: 20),
                                           SettingsForWidget(
                                             text: "Weight",
-                                            controller: weightController,
+                                            controller: controllerHandle,
                                           ),
                                         ],
                                       ),
@@ -222,6 +228,8 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
               ],
             )
           : Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text(
                   "Settings for B5 (A)",
@@ -236,115 +244,132 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                 ),
                 const SizedBox(height: 46),
                 InkWell(
-                  onTap: () {
-                    unawaited(
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            contentTextStyle: const TextStyle(),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                    onTap: () {
+                      unawaited(
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              contentTextStyle: const TextStyle(),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
                               ),
-                            ),
-                            title: const Text(
-                              textAlign: TextAlign.center,
-                              "Settings for B5 (A)",
-                            ),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    SettingsForWidget(
-                                      controller: seatsController,
-                                      text: "Seats",
-                                    ),
-                                    const SizedBox(width: 20),
-                                    SettingsForWidget(
-                                      text: "Pin",
-                                      controller: pinController,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    SettingsForWidget(
-                                      text: "Back",
-                                      controller: backController,
-                                    ),
-                                    const SizedBox(width: 20),
-                                    SettingsForWidget(
-                                      text: "Weight",
-                                      controller: weightController,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                  textAlign: TextAlign.center,
-                                  "* Weight for current workout",
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                              ],
-                            ),
-                            actions: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(),
-                                      child: const Text(
-                                        "Cancel",
-                                        style: TextStyle(
-                                          color: Color(0xFFC8CE37),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w800,
-                                        ),
+                              title: const Text(
+                                textAlign: TextAlign.center,
+                                "Settings for B5 (A)",
+                              ),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SettingsForWidget(
+                                        controller: controllerSeats,
+                                        text: "Seats",
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 52,
-                                      width: 150,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              const Color(0xFFC8CE37),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                          ),
-                                        ),
+                                      const SizedBox(width: 20),
+                                      SettingsForWidget(
+                                        text: "Pin",
+                                        controller: controllerPin,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      SettingsForWidget(
+                                        text: "Back",
+                                        controller: controllerBack,
+                                      ),
+                                      const SizedBox(width: 20),
+                                      SettingsForWidget(
+                                        text: "Weight",
+                                        controller: controllerHandle,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 20),
+                                  const Text(
+                                    textAlign: TextAlign.center,
+                                    "* Weight for current workout",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              actions: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      TextButton(
                                         onPressed: () =>
                                             Navigator.of(context).pop(),
                                         child: const Text(
-                                          "Ok",
-                                          textAlign: TextAlign.center,
-                                          style: AppFonts.w700s18,
+                                          "Cancel",
+                                          style: TextStyle(
+                                            color: Color(0xFFC8CE37),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w800,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        height: 52,
+                                        width: 150,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color(0xFFC8CE37),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            final SharedPreferences prefs =
+                                                SharedPrefsWidget.prefs;
+                                            await prefs.setString(
+                                                AppConsts.seats,
+                                                controllerSeats.text);
+                                            await prefs.setString(AppConsts.pin,
+                                                controllerPin.text);
+                                            await prefs.setString(
+                                                AppConsts.back,
+                                                controllerBack.text);
+                                            await prefs.setString(
+                                                AppConsts.handle,
+                                                controllerHandle.text);
+                                            Navigator.of(context).pop();
+                                            setState(() {});
+                                          },
+                                          child: const Text(
+                                            "Ok",
+                                            textAlign: TextAlign.center,
+                                            style: AppFonts.w700s18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                            ],
-                          );
-                        },
-                      ),
-                    );
-                  },
-                  child: SvgPicture.asset(
-                    AppSvgs.settingsProgram,
-                  ),
-                ),
+                                const SizedBox(height: 20),
+                              ],
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: //textProgram != null
+                        const BlocProgramWidget()
+                    // : SvgPicture.asset(
+                    //     AppSvgs.settingsProgram,
+                    //   ),
+                    ),
                 const SizedBox(height: 40),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),

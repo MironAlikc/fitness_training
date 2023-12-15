@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 @RoutePage()
 class SelectTrainingScreen extends StatelessWidget {
   const SelectTrainingScreen({
+    super.key,
     required this.selectedTrainers,
   });
   final List<String> selectedTrainers;
@@ -58,7 +59,8 @@ class SelectTrainingScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
+              runAlignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.start,
               alignment: WrapAlignment.center,
               spacing: 10,
               runSpacing: 5,

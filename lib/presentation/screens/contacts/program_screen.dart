@@ -27,6 +27,8 @@ class ProgramScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const CircleAvatar(
                 radius: 90,
@@ -38,13 +40,16 @@ class ProgramScreen extends StatelessWidget {
               const SizedBox(height: 11),
               const UserCardWidget(),
               const SizedBox(height: 50),
-              ButtonWidget(
-                onPressed: () {
-                  AutoRouter.of(context).push(
-                    const CreateProgramRoute(),
-                  );
-                },
-                title: "Create New Program",
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ButtonWidget(
+                  onPressed: () {
+                    AutoRouter.of(context).push(
+                      const CreateProgramRoute(),
+                    );
+                  },
+                  title: "Create New Program",
+                ),
               ),
               const TabBarTrainingWidget(),
             ],

@@ -12,8 +12,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepositories repo;
   late SharedPreferences prefs;
   AuthBloc({required this.repo}) : super(AuthInitial()) {
-    //  initializeSharedPreferences();
-
     on<GetTokenEvent>((event, emit) async {
       try {
         emit(AuthLoading());
@@ -24,8 +22,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         final TokenModel data = TokenModel.fromJson(result);
         emit(AuthSucces(model: data));
-
-        // saveCredentials(event.login, event.password);
       } catch (e) {
         if (e is DioException) {
           final errorText = ErrorModel.fromJson(e.response!.data);
@@ -42,14 +38,4 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
   }
-
-  // void initializeSharedPreferences() async {
-  //   prefs = await SharedPreferences.getInstance();
-  // }
-
-  // void saveCredentials(String login, String password) {
-  //   // Save login and password to SharedPreferences
-  //   prefs.setString('login', login);
-  //   prefs.setString('password', password);
-  // }
 }
