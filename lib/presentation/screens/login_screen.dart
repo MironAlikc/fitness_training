@@ -88,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     await prefs.setString(
                         AppConsts.password, controlerPassword.text);
                     await prefs.setBool(AppConsts.isLogined, true);
+                    setState(() {});
                     BlocProvider.of<AuthBloc>(context).add(
                       GetTokenEvent(
                         login: controlerEmail.text,

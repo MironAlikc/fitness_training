@@ -12,6 +12,7 @@ class SettingsForWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -19,10 +20,10 @@ class SettingsForWidget extends StatelessWidget {
           text,
           style: const TextStyle(color: Colors.black),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Container(
-          height: 50,
-          width: 120,
+          height: 40,
+          width: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.white,
