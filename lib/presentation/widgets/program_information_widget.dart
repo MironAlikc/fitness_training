@@ -13,14 +13,14 @@ class ProgramInformationWidget extends StatelessWidget {
   final String textInt;
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.center,
-      // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(
           image,
-          height: 50,
-          width: 50,
+          height: (screenWidth > 600) ? 100 : 50,
+          width: (screenWidth > 600) ? 100 : 50,
           color: Colors.black,
         ),
         Row(
@@ -28,9 +28,9 @@ class ProgramInformationWidget extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(
-                color: Color(0xFFA3A3A3),
-                fontSize: 24,
+              style: TextStyle(
+                color: const Color(0xFFA3A3A3),
+                fontSize: (screenWidth > 600) ? 44 : 24,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w400,
                 height: 0,
@@ -39,9 +39,9 @@ class ProgramInformationWidget extends StatelessWidget {
             const SizedBox(width: 20),
             Text(
               textInt,
-              style: const TextStyle(
-                color: Color(0xFF1E1E1E),
-                fontSize: 34,
+              style: TextStyle(
+                color: const Color(0xFF1E1E1E),
+                fontSize: (screenWidth > 600) ? 64 : 34,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w700,
                 height: 0,
