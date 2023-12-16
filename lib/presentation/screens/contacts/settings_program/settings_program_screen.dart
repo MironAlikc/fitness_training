@@ -6,6 +6,7 @@ import "package:fitness_training/core/const.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
 import "package:fitness_training/presentation/themes/app_fonts.dart";
 import "package:fitness_training/presentation/widgets/bloc_program_widget.dart";
+import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/presentation/widgets/custom_timer_widget.dart";
 import "package:fitness_training/presentation/widgets/settings_for_widget.dart";
 import "package:fitness_training/presentation/widgets/shared_prefs_widget.dart";
@@ -51,366 +52,419 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
         ),
       ),
       body: (screenWidth > 600)
-          ? Column(
-              children: [
-                const Text(
-                  "Settings for B5 (A)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF1E1E1E),
-                    fontSize: 24,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w800,
-                    height: 0,
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Text(
+                    "Settings for B5 (A)",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF1E1E1E),
+                      fontSize: 24,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w800,
+                      height: 0,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 46),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 80),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          unawaited(
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  contentTextStyle: const TextStyle(),
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(15),
+                  const SizedBox(height: 46),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 80),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            unawaited(
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    contentTextStyle: const TextStyle(),
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(15),
+                                      ),
                                     ),
-                                  ),
-                                  title: const Text(
-                                    textAlign: TextAlign.center,
-                                    "Settings for B5 (A)",
-                                  ),
-                                  content: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SettingsForWidget(
-                                              text: "Seats",
-                                              controller: controllerSeats),
-                                          const SizedBox(width: 20),
-                                          SettingsForWidget(
-                                            text: "Pin",
-                                            controller: controllerPin,
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Row(
-                                        children: [
-                                          SettingsForWidget(
-                                            text: "Back",
-                                            controller: controllerBack,
-                                          ),
-                                          const SizedBox(width: 20),
-                                          SettingsForWidget(
-                                            text: "Weight",
-                                            controller: controllerHandle,
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 20),
-                                      const Text(
-                                        textAlign: TextAlign.center,
-                                        "* Weight for current workout",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  actions: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 150,
-                                        vertical: 100,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          TextButton(
-                                            onPressed: () =>
-                                                Navigator.of(context).pop(),
-                                            child: const Text(
-                                              "Cancel",
-                                              style: TextStyle(
-                                                color: Color(0xFFC8CE37),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w800,
-                                              ),
+                                    title: const Text(
+                                      textAlign: TextAlign.center,
+                                      "Settings for B5 (A)",
+                                    ),
+                                    content: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            SettingsForWidget(
+                                                text: "Seats",
+                                                controller: controllerSeats),
+                                            const SizedBox(width: 20),
+                                            SettingsForWidget(
+                                              text: "Pin",
+                                              controller: controllerPin,
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: 52,
-                                            width: 170,
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor:
-                                                    const Color(0xFFC8CE37),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                ),
-                                              ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Row(
+                                          children: [
+                                            SettingsForWidget(
+                                              text: "Back",
+                                              controller: controllerBack,
+                                            ),
+                                            const SizedBox(width: 20),
+                                            SettingsForWidget(
+                                              text: "Weight",
+                                              controller: controllerHandle,
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 20),
+                                        const Text(
+                                          textAlign: TextAlign.center,
+                                          "* Weight for current workout",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 150,
+                                          vertical: 100,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            TextButton(
                                               onPressed: () =>
                                                   Navigator.of(context).pop(),
                                               child: const Text(
-                                                "Ok",
-                                                textAlign: TextAlign.center,
-                                                style: AppFonts.w700s18,
+                                                "Cancel",
+                                                style: TextStyle(
+                                                  color: Color(0xFFC8CE37),
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w800,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            SizedBox(
+                                              height: 52,
+                                              width: 170,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      const Color(0xFFC8CE37),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                  ),
+                                                ),
+                                                onPressed: () =>
+                                                    Navigator.of(context).pop(),
+                                                child: const Text(
+                                                  "Ok",
+                                                  textAlign: TextAlign.center,
+                                                  style: AppFonts.w700s18,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(height: 20),
-                                  ],
+                                      const SizedBox(height: 20),
+                                    ],
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          child: SvgPicture.asset(
+                            AppSvgs.settingsProgram,
+                            height: 350,
+                            width: 350,
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            CustomTimerWidget(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const StopwatchTimerScreens(),
+                                  ),
                                 );
                               },
+                              title: "Timer",
+                              image: AppSvgs.timer,
                             ),
-                          );
-                        },
-                        child: SvgPicture.asset(
-                          AppSvgs.settingsProgram,
-                          height: 350,
-                          width: 350,
+                            const SizedBox(height: 20),
+                            CustomTimerWidget(
+                              onPressed: () {},
+                              title: "Metronom",
+                              image: AppSvgs.metronom,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  const Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      "History",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Color(0xFF1E1E1E),
+                        fontSize: 24,
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w800,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Text(
+                    "Settings for B5 (A)",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF1E1E1E),
+                      fontSize: 24,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w800,
+                      height: 0,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  InkWell(
+                    onTap: () {
+                      unawaited(
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              contentTextStyle: const TextStyle(),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
+                              title: const Text(
+                                textAlign: TextAlign.center,
+                                "Settings for B5 (A)",
+                              ),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SettingsForWidget(
+                                        controller: controllerSeats,
+                                        text: "Seats",
+                                      ),
+                                      const SizedBox(width: 20),
+                                      SettingsForWidget(
+                                        text: "Pin",
+                                        controller: controllerPin,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SettingsForWidget(
+                                        text: "Back",
+                                        controller: controllerBack,
+                                      ),
+                                      const SizedBox(width: 20),
+                                      SettingsForWidget(
+                                        text: "Weight",
+                                        controller: controllerHandle,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 5),
+                                  const Text(
+                                    textAlign: TextAlign.center,
+                                    "* Weight for current workout",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              actions: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.of(context).pop(),
+                                        child: const Text(
+                                          "Cancel",
+                                          style: TextStyle(
+                                            color: Color(0xFFC8CE37),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 52,
+                                        width: 150,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color(0xFFC8CE37),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                          ),
+                                          onPressed: () async {
+                                            final SharedPreferences prefs =
+                                                SharedPrefsWidget.prefs;
+                                            await prefs.setString(
+                                                AppConsts.seats,
+                                                controllerSeats.text);
+                                            await prefs.setString(AppConsts.pin,
+                                                controllerPin.text);
+                                            await prefs.setString(
+                                                AppConsts.back,
+                                                controllerBack.text);
+                                            await prefs.setString(
+                                                AppConsts.handle,
+                                                controllerHandle.text);
+                                            Navigator.of(context).pop();
+                                            setState(() {});
+                                          },
+                                          child: const Text(
+                                            "Ok",
+                                            textAlign: TextAlign.center,
+                                            style: AppFonts.w700s18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                              ],
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: (isGridView = !isGridView)
+                        ? const BlocProgramWidget()
+                        : SvgPicture.asset(
+                            AppSvgs.settingsProgram,
+                          ),
+                  ),
+                  const SizedBox(height: 40),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomTimerWidget(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const StopwatchTimerScreens(),
+                              ),
+                            );
+                          },
+                          title: "Timer",
+                          image: AppSvgs.timer,
+                        ),
+                        CustomTimerWidget(
+                          onPressed: () {},
+                          title: "Metronom",
+                          image: AppSvgs.metronom,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 39),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "History",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Color(0xFF1E1E1E),
+                          fontSize: 24,
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.w800,
+                          height: 0,
                         ),
                       ),
-                      Column(
-                        children: [
-                          CustomTimerWidget(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const StopwatchTimerScreens(),
-                                ),
-                              );
-                            },
-                            title: "Timer",
-                            image: AppSvgs.timer,
-                          ),
-                          const SizedBox(height: 20),
-                          CustomTimerWidget(
-                            onPressed: () {},
-                            title: "Metronom",
-                            image: AppSvgs.metronom,
-                          ),
-                        ],
+                    ),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        'Date',
+                        style: TextStyle(
+                          color: Color(0xFFA3A3A3),
+                          fontSize: 24,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w500,
+                          height: 0,
+                        ),
+                      ),
+                      Text(
+                        'Weight',
+                        style: TextStyle(
+                          color: Color(0xFFA3A3A3),
+                          fontSize: 24,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w500,
+                          height: 0,
+                        ),
+                      ),
+                      Text(
+                        'Time',
+                        style: TextStyle(
+                          color: Color(0xFFA3A3A3),
+                          fontSize: 24,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w500,
+                          height: 0,
+                        ),
                       )
                     ],
                   ),
-                ),
-                const SizedBox(height: 40),
-                const Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    "History",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: Color(0xFF1E1E1E),
-                      fontSize: 24,
-                      fontFamily: "Inter",
-                      fontWeight: FontWeight.w800,
-                      height: 0,
+                  // const SizedBox(height: 120),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: ButtonWidget(
+                      onPressed: () {},
+                      title: 'Next',
                     ),
-                  ),
-                ),
-              ],
-            )
-          : Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  "Settings for B5 (A)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF1E1E1E),
-                    fontSize: 24,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w800,
-                    height: 0,
-                  ),
-                ),
-                const SizedBox(height: 46),
-                InkWell(
-                  onTap: () {
-                    unawaited(
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            contentTextStyle: const TextStyle(),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
-                              ),
-                            ),
-                            title: const Text(
-                              textAlign: TextAlign.center,
-                              "Settings for B5 (A)",
-                            ),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    SettingsForWidget(
-                                      controller: controllerSeats,
-                                      text: "Seats",
-                                    ),
-                                    const SizedBox(width: 20),
-                                    SettingsForWidget(
-                                      text: "Pin",
-                                      controller: controllerPin,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    SettingsForWidget(
-                                      text: "Back",
-                                      controller: controllerBack,
-                                    ),
-                                    const SizedBox(width: 20),
-                                    SettingsForWidget(
-                                      text: "Weight",
-                                      controller: controllerHandle,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                const Text(
-                                  textAlign: TextAlign.center,
-                                  "* Weight for current workout",
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                              ],
-                            ),
-                            actions: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(),
-                                      child: const Text(
-                                        "Cancel",
-                                        style: TextStyle(
-                                          color: Color(0xFFC8CE37),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w800,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 52,
-                                      width: 150,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              const Color(0xFFC8CE37),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                          ),
-                                        ),
-                                        onPressed: () async {
-                                          final SharedPreferences prefs =
-                                              SharedPrefsWidget.prefs;
-                                          await prefs.setString(AppConsts.seats,
-                                              controllerSeats.text);
-                                          await prefs.setString(AppConsts.pin,
-                                              controllerPin.text);
-                                          await prefs.setString(AppConsts.back,
-                                              controllerBack.text);
-                                          await prefs.setString(
-                                              AppConsts.handle,
-                                              controllerHandle.text);
-                                          Navigator.of(context).pop();
-                                          setState(() {});
-                                        },
-                                        child: const Text(
-                                          "Ok",
-                                          textAlign: TextAlign.center,
-                                          style: AppFonts.w700s18,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                            ],
-                          );
-                        },
-                      ),
-                    );
-                  },
-                  child: (isGridView = !isGridView)
-                      ? const BlocProgramWidget()
-                      : SvgPicture.asset(
-                          AppSvgs.settingsProgram,
-                        ),
-                ),
-                const SizedBox(height: 40),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomTimerWidget(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const StopwatchTimerScreens(),
-                            ),
-                          );
-                        },
-                        title: "Timer",
-                        image: AppSvgs.timer,
-                      ),
-                      CustomTimerWidget(
-                        onPressed: () {},
-                        title: "Metronom",
-                        image: AppSvgs.metronom,
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 40),
-                const Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    "History",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: Color(0xFF1E1E1E),
-                      fontSize: 24,
-                      fontFamily: "Inter",
-                      fontWeight: FontWeight.w800,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ],
+                  )
+                ],
+              ),
             ),
     );
   }
