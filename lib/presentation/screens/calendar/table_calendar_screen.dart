@@ -52,10 +52,10 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      //backgroundColor: Colors.b,
       appBar: AppBar(
         leadingWidth: 70,
-        backgroundColor: Colors.grey,
+        //    backgroundColor: Colors.grey,
         elevation: 0,
         leading: IconButton(
           icon: Image.asset(
@@ -73,6 +73,8 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TableCalendar(
+                startingDayOfWeek: StartingDayOfWeek.monday,
+                daysOfWeekHeight: 50,
                 locale: "en_US",
                 rowHeight: 43,
                 headerStyle: const HeaderStyle(
@@ -90,36 +92,24 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                 onRangeSelected: _onRangeSelected,
                 rangeEndDay: _rangeEnd,
                 daysOfWeekStyle: const DaysOfWeekStyle(
-                  weekdayStyle: const TextStyle(color: Colors.black),
+                  weekdayStyle: TextStyle(color: Colors.black),
                 ),
                 calendarStyle: const CalendarStyle(
-                  rangeHighlightColor: Colors.red,
+                  defaultTextStyle: TextStyle(color: Colors.black),
+                  weekNumberTextStyle: TextStyle(color: Colors.black),
+                  weekendTextStyle: TextStyle(color: Colors.black),
+
+                  rangeHighlightColor: Color.fromARGB(255, 229, 233, 112),
                   isTodayHighlighted: false,
                   canMarkersOverflow: false,
                   outsideDaysVisible: false,
                   markersAutoAligned: false,
-                  outsideTextStyle: TextStyle(color: Colors.red),
-                  disabledTextStyle: TextStyle(color: Colors.red),
-                  holidayTextStyle: TextStyle(color: Colors.red),
-                  holidayDecoration: BoxDecoration(
-                    border: Border.fromBorderSide(
-                      BorderSide(color: Colors.red, width: 1.4),
-                    ),
-                    shape: BoxShape.circle,
-                  ),
-                  weekNumberTextStyle:
-                      TextStyle(fontSize: 12, color: Colors.red),
-                  weekendTextStyle: TextStyle(color: Colors.red),
-                  // todayDecoration: const BoxDecoration(
-                  //   color: Colors.red,
-                  //   shape: BoxShape.rectangle,
-                  // ),
                   selectedTextStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 16.0,
                   ),
                   selectedDecoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Color(0xFFC8CE37),
                     shape: BoxShape.circle,
                   ),
                   rangeStartTextStyle: TextStyle(
@@ -127,25 +117,21 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                     fontSize: 16.0,
                   ),
                   rangeEndDecoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Color(0xFFC8CE37),
                     shape: BoxShape.circle,
                   ),
                   rangeStartDecoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Color(0xFFC8CE37),
                     shape: BoxShape.circle,
                   ),
                   rangeEndTextStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 16.0,
                   ),
-                  markerDecoration: BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                  ),
-                  //rangeHighlightColor: Colors.black,
+
                   todayTextStyle: TextStyle(
                     color: Colors.black,
-                    // backgroundColor: Colors.black,
+                    backgroundColor: Colors.black,
                     decorationColor: Colors.green,
                     decorationStyle: TextDecorationStyle.dashed,
                   ),
@@ -157,7 +143,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                     setState(() {});
                   }
                 }),
-            Spacer(),
+            const Spacer(),
             // const SizedBox(height: 100),
             ButtonWidget(
               onPressed: () {},
