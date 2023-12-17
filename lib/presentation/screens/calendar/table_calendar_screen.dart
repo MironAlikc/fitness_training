@@ -73,11 +73,17 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TableCalendar(
+                calendarFormat: CalendarFormat.month,
                 startingDayOfWeek: StartingDayOfWeek.monday,
                 daysOfWeekHeight: 50,
                 locale: "en_US",
                 rowHeight: 43,
                 headerStyle: const HeaderStyle(
+                  titleTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
                   formatButtonVisible: false,
                   titleCentered: true,
                 ),
