@@ -1,5 +1,7 @@
 import "dart:async";
 
+import "package:auto_route/auto_route.dart";
+import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
 
 class StopwatchTimerScreens extends StatefulWidget {
@@ -80,10 +82,24 @@ class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        leadingWidth: 70,
         backgroundColor: Colors.black,
+        elevation: 0,
+        leading: IconButton(
+          icon: Image.asset(
+            AppPngs.back,
+            height: (screenWidth > 600) ? 400 : 150,
+            width: (screenWidth > 600) ? 400 : 250,
+          ),
+          onPressed: () {
+            AutoRouter.of(context).pop();
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

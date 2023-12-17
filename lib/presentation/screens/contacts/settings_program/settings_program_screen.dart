@@ -6,6 +6,7 @@ import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/s
 import "package:fitness_training/presentation/widgets/bloc_program_widget.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/presentation/widgets/custom_timer_widget.dart";
+import "package:fitness_training/presentation/widgets/history_widget.dart";
 import "package:fitness_training/presentation/widgets/program_dialog_widget.dart";
 import "package:fitness_training/presentation/widgets/shared_prefs_widget.dart";
 import "package:fitness_training/resources/resources.dart";
@@ -49,9 +50,9 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
           },
         ),
       ),
-      body: (screenWidth > 600)
-          ? SingleChildScrollView(
-              child: Column(
+      body: SingleChildScrollView(
+        child: (screenWidth > 600)
+            ? Column(
                 children: [
                   const Text(
                     "Settings for B5 (A)",
@@ -123,25 +124,15 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  const Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      "History",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Color(0xFF1E1E1E),
-                        fontSize: 24,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w800,
-                        height: 0,
-                      ),
-                    ),
-                  ),
+                  const HistoryWidget(),
+                  const SizedBox(height: 80),
+                  ButtonWidget(
+                    onPressed: () {},
+                    title: 'Next',
+                  )
                 ],
-              ),
-            )
-          : SingleChildScrollView(
-              child: Column(
+              )
+            : Column(
                 children: [
                   const Text(
                     "Settings for B5 (A)",
@@ -154,7 +145,7 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                       height: 0,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 10),
                   ProgramDialogWidget(
                     controllerSeats: controllerSeats,
                     controllerPin: controllerPin,
@@ -205,59 +196,8 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 39),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        "History",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color(0xFF1E1E1E),
-                          fontSize: 24,
-                          fontFamily: "Inter",
-                          fontWeight: FontWeight.w800,
-                          height: 0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        'Date',
-                        style: TextStyle(
-                          color: Color(0xFFA3A3A3),
-                          fontSize: 24,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                      ),
-                      Text(
-                        'Weight',
-                        style: TextStyle(
-                          color: Color(0xFFA3A3A3),
-                          fontSize: 24,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                      ),
-                      Text(
-                        'Time',
-                        style: TextStyle(
-                          color: Color(0xFFA3A3A3),
-                          fontSize: 24,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                      )
-                    ],
-                  ),
-                  // const SizedBox(height: 120),
+                  const HistoryWidget(),
+                  const SizedBox(height: 80),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: ButtonWidget(
@@ -267,7 +207,7 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                   )
                 ],
               ),
-            ),
+      ),
     );
   }
 }
