@@ -63,68 +63,70 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
           },
         ),
       ),
-      body: Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            Text(
-              "Select training \nmachienes for Program A",
-              textAlign: TextAlign.center,
-              style: screenWidth > 600 ? AppFonts.w800s40 : AppFonts.w800s24,
-            ),
-            const SizedBox(height: 20),
-            Wrap(
-              spacing: 40,
-              runSpacing: 20,
-              children: [
-                for (final letter in letters)
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (selectedLetters.contains(letter)) {
-                          selectedLetters.remove(letter);
-                        } else {
-                          selectedLetters.add(letter);
-                        }
-                      });
-                    },
-                    child: Container(
-                      width: screenWidth > 600 ? 130 : 65,
-                      height: screenWidth > 600 ? 110 : 55,
-                      decoration: BoxDecoration(
-                        color: selectedLetters.contains(letter)
-                            ? const Color(0xFFC8CE37)
-                            : null,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          letter,
-                          style: TextStyle(
-                            color: selectedLetters.contains(letter)
-                                ? Colors.white
-                                : const Color(0xFFA3A3A3),
-                            fontSize: screenWidth > 600 ? 80 : 40,
-                            fontFamily: "Inter",
-                            fontWeight: FontWeight.w500,
+      body: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              Text(
+                "Select training \nmachienes for Program A",
+                textAlign: TextAlign.center,
+                style: screenWidth > 600 ? AppFonts.w800s40 : AppFonts.w800s24,
+              ),
+              const SizedBox(height: 20),
+              Wrap(
+                spacing: 40,
+                runSpacing: 20,
+                children: [
+                  for (final letter in letters)
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          if (selectedLetters.contains(letter)) {
+                            selectedLetters.remove(letter);
+                          } else {
+                            selectedLetters.add(letter);
+                          }
+                        });
+                      },
+                      child: Container(
+                        width: screenWidth > 600 ? 130 : 65,
+                        height: screenWidth > 600 ? 110 : 55,
+                        decoration: BoxDecoration(
+                          color: selectedLetters.contains(letter)
+                              ? const Color(0xFFC8CE37)
+                              : null,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            letter,
+                            style: TextStyle(
+                              color: selectedLetters.contains(letter)
+                                  ? Colors.white
+                                  : const Color(0xFFA3A3A3),
+                              fontSize: screenWidth > 600 ? 80 : 40,
+                              fontFamily: "Inter",
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-              ],
-            ),
-            const Spacer(),
-            ButtonWidget(
-              onPressed: () {
-                AutoRouter.of(context).push(
-                  SelectTrainingRoute(selectedTrainers: selectedLetters),
-                );
-              },
-              title: "Next",
-            ),
-            const SizedBox(height: 20),
-          ],
+                ],
+              ),
+              //  const Spacer(),
+              ButtonWidget(
+                onPressed: () {
+                  AutoRouter.of(context).push(
+                    SelectTrainingRoute(selectedTrainers: selectedLetters),
+                  );
+                },
+                title: "Next",
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

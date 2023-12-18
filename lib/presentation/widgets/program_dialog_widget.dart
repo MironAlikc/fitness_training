@@ -22,6 +22,8 @@ class ProgramDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return InkWell(
       onTap: () {
         unawaited(
@@ -97,8 +99,8 @@ class ProgramDialogWidget extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 52,
-                          width: 150,
+                          height: screenWidth > 600 ? 100 : 30,
+                          width: screenWidth > 600 ? 150 : 80,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFC8CE37),

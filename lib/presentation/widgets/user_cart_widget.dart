@@ -44,7 +44,7 @@ class UserCardWidget extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: screenWidth > 600 ? 80 : 20,
+                horizontal: screenWidth > 600 ? 180 : 5,
               ),
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,12 +64,12 @@ class UserCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Text(
+            const Text(
               "Some notes about Andrew",
               textAlign: TextAlign.center,
               style: AppFonts.w400s18,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

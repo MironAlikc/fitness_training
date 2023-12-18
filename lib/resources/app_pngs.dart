@@ -16,4 +16,5 @@ class AppPngs {
   static const String handle = 'assets/pngs/handle.png';
   static const String pin = 'assets/pngs/pin.png';
   static const String seats = 'assets/pngs/seats.png';
+  static const String backButton = 'assets/pngs/back_button.png';
 }

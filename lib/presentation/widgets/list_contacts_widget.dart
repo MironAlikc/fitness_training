@@ -35,13 +35,13 @@ class ListContactsWidget extends StatelessWidget {
               child: const Row(
                 children: [
                   CircleAvatar(
-                    radius: 37,
+                    radius: 30,
                     backgroundColor: Colors.white,
                     backgroundImage: AssetImage(
                       AppPngs.userImage,
                     ),
                   ),
-                  SizedBox(width: 18),
+                  SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

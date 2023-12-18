@@ -51,7 +51,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       ),
                     );
                   } else {
-                    return ListView.builder(
+                    return ListView.builder( 
                       padding: const EdgeInsets.only(top: 50),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,

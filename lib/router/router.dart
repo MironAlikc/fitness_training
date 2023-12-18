@@ -8,6 +8,7 @@ import 'package:fitness_training/presentation/screens/contacts/select_training_s
 import 'package:fitness_training/presentation/screens/contacts/settings_program/settings_program_screen.dart';
 import 'package:fitness_training/presentation/screens/home_screen.dart';
 import 'package:fitness_training/presentation/screens/login_screen.dart';
+import 'package:fitness_training/presentation/screens/settings/change_info_screen.dart';
 import 'package:fitness_training/presentation/screens/settings/settings_screen.dart';
 import 'package:fitness_training/presentation/screens/splash_screen.dart';
 
@@ -42,5 +43,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: CreateProgramRoute.page, path: "/createProgram"),
         AutoRoute(page: SelectTrainingRoute.page, path: "/selectTraining"),
         AutoRoute(page: SettingsProgramRoute.page, path: "/settingsProgram"),
+        AutoRoute(page: ChangeInfoRoute.page, path: "/changeInfo"),
       ];
 }
