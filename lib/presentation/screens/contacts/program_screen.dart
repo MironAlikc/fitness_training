@@ -31,7 +31,7 @@ class ProgramScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const CircleAvatar(
-                radius: 90,
+                radius: 70,
                 backgroundColor: Colors.white,
                 backgroundImage: AssetImage(
                   AppPngs.user,

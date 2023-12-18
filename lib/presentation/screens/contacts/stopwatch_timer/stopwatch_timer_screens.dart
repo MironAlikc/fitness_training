@@ -101,98 +101,95 @@ class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Center(
-              child: Text(
-                "$digitHours:$digitMinutes:$digitSeconds",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 50,
-                  fontWeight: FontWeight.w600,
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Center(
+            child: Text(
+              "$digitHours:$digitMinutes:$digitSeconds",
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 50,
+                fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(reset);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 60, 59, 59),
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(34),
-                  ),
-                  child: const Text(
-                    "Reset",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                IconButton(
-                  color: Colors.white,
-                  onPressed: addLaps,
-                  icon: const Icon(Icons.flag),
-                ),
-                const SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    (!started) ? start() : stop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: (!started)
-                        ? const Color.fromARGB(255, 47, 112, 49)
-                        : const Color.fromARGB(255, 119, 46, 41),
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(34),
-                  ),
-                  child: Text(
-                    (!started) ? "Start" : "Pause",
-                    style: TextStyle(
-                      color: (!started) ? Colors.black : Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 400,
-              child: ListView.builder(
-                itemCount: laps.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "круг ${index + 1}",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          "${laps[index]}",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(reset);
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 60, 59, 59),
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(34),
+                ),
+                child: const Text(
+                  "Reset",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
+              const SizedBox(width: 8),
+              IconButton(
+                color: Colors.white,
+                onPressed: addLaps,
+                icon: const Icon(Icons.flag),
+              ),
+              const SizedBox(width: 8),
+              ElevatedButton(
+                onPressed: () {
+                  (!started) ? start() : stop();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: (!started)
+                      ? const Color.fromARGB(255, 47, 112, 49)
+                      : const Color.fromARGB(255, 119, 46, 41),
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(34),
+                ),
+                child: Text(
+                  (!started) ? "Start" : "Pause",
+                  style: TextStyle(
+                    color: (!started) ? Colors.black : Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 400,
+            child: ListView.builder(
+              itemCount: laps.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "круг ${index + 1}",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "${laps[index]}",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

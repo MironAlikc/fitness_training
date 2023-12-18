@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CalendarScreen(),
       );
     },
+    ChangeInfoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ChangeInfoScreen(),
+      );
+    },
     ContactsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -83,6 +89,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [ChangeInfoScreen]
+class ChangeInfoRoute extends PageRouteInfo<void> {
+  const ChangeInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          ChangeInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChangeInfoRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

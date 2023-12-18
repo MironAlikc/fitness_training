@@ -9,4 +9,8 @@ class AppSvgs {
   static const String settings = 'assets/svgs/settings.svg';
   static const String settingsProgram = 'assets/svgs/settings_program.svg';
   static const String timer = 'assets/svgs/timer.svg';
+  static const String backArrow = 'assets/svgs/back_arrow.svg';
+  static const String camera = 'assets/svgs/camera.svg';
+  static const String delete = 'assets/svgs/delete.svg';
+  static const String photo = 'assets/svgs/photo.svg';
 }
