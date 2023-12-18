@@ -1,4 +1,5 @@
 import "package:auto_route/auto_route.dart";
+import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:fitness_training/router/router.dart";
 import "package:flutter/material.dart";
@@ -88,6 +89,16 @@ class SelectTrainingScreen extends StatelessWidget {
                 );
               }).toList(),
             ),
+            const Spacer(),
+            ButtonWidget(
+              onPressed: () {
+                // AutoRouter.of(context).push(
+                //   SelectTrainingRoute(selectedTrainers: selectedLetters),
+                // );
+              },
+              title: "Next",
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

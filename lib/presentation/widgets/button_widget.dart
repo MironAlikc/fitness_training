@@ -7,7 +7,7 @@ class ButtonWidget extends StatelessWidget {
     required this.title,
     super.key,
   });
-  final Function() onPressed;
+  final Function()? onPressed;
   final String title;
 
   @override
