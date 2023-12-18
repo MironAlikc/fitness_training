@@ -116,12 +116,16 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
                 ],
               ),
               //  const Spacer(),
+              const SizedBox(height: 30),
               ButtonWidget(
-                onPressed: () {
-                  AutoRouter.of(context).push(
-                    SelectTrainingRoute(selectedTrainers: selectedLetters),
-                  );
-                },
+                onPressed: selectedLetters.isNotEmpty
+                    ? () {
+                        AutoRouter.of(context).push(
+                          SelectTrainingRoute(
+                              selectedTrainers: selectedLetters),
+                        );
+                      }
+                    : null,
                 title: "Next",
               ),
               const SizedBox(height: 20),
