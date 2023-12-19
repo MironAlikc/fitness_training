@@ -2,6 +2,7 @@
 
 import "package:auto_route/auto_route.dart";
 import "package:fitness_training/core/const.dart";
+import "package:fitness_training/data/models/program_settings_model.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
 import "package:fitness_training/presentation/widgets/bloc_program_widget.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
@@ -11,25 +12,30 @@ import "package:fitness_training/presentation/widgets/program_dialog_widget.dart
 import "package:fitness_training/presentation/widgets/shared_prefs_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
-import "package:flutter_svg/svg.dart";
-import "package:shared_preferences/shared_preferences.dart";
 
 @RoutePage()
 class SettingsProgramScreen extends StatefulWidget {
-  const SettingsProgramScreen({super.key});
+  final ProgramSettingsModel programSettings;
+
+  const SettingsProgramScreen({
+    super.key,
+    required this.programSettings,
+  });
 
   @override
   State<SettingsProgramScreen> createState() => _SettingsProgramScreenState();
 }
 
-TextEditingController controllerSeats = TextEditingController();
-TextEditingController controllerPin = TextEditingController();
-TextEditingController controllerBack = TextEditingController();
-TextEditingController controllerHandle = TextEditingController();
-
 class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
   String? textProgram;
   bool isGridView = true;
+  late ProgramSettingsModel _programSettings;
+  @override
+  void initState() {
+    super.initState();
+    _programSettings = widget.programSettings;
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -54,10 +60,10 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
         child: (screenWidth > 600)
             ? Column(
                 children: [
-                  const Text(
-                    "Settings for B5 (A)",
+                  Text(
+                    "Settings for ${_programSettings.apparat.name} (A)",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFF1E1E1E),
                       fontSize: 24,
                       fontFamily: "Inter",
@@ -72,31 +78,24 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ProgramDialogWidget(
-                          controllerSeats: controllerSeats,
-                          controllerPin: controllerPin,
-                          controllerBack: controllerBack,
-                          controllerHandle: controllerHandle,
-                          onPressed: () async {
-                            final SharedPreferences prefs =
-                                SharedPrefsWidget.prefs;
-                            await prefs.setString(
-                                AppConsts.seats, controllerSeats.text);
-                            await prefs.setString(
-                                AppConsts.pin, controllerPin.text);
-                            await prefs.setString(
-                                AppConsts.back, controllerBack.text);
-                            await prefs.setString(
-                                AppConsts.handle, controllerHandle.text);
+                          onPressed: (settings) async {
+                            // final SharedPreferences prefs =
+                            //     SharedPrefsWidget.prefs;
+                            // await prefs.setString(
+                            //     AppConsts.seats, controllerSeats.text);
+                            // await prefs.setString(
+                            //     AppConsts.pin, controllerPin.text);
+                            // await prefs.setString(
+                            //     AppConsts.back, controllerBack.text);
+                            // await prefs.setString(
+                            //     AppConsts.handle, controllerHandle.text);
+
                             Navigator.of(context).pop();
-                            setState(() {});
+                            setState(() {
+                              _programSettings = settings;
+                            });
                           },
-                          child: (isGridView = !isGridView)
-                              ? const BlocProgramWidget()
-                              : SvgPicture.asset(
-                                  AppSvgs.settingsProgram,
-                                  height: 350,
-                                  width: 350,
-                                ),
+                          programSettings: _programSettings,
                         ),
                         Column(
                           children: [
@@ -134,10 +133,10 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
               )
             : Column(
                 children: [
-                  const Text(
-                    "Settings for B5 (A)",
+                  Text(
+                    "Settings for ${_programSettings.apparat.name} (A)",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFF1E1E1E),
                       fontSize: 24,
                       fontFamily: "Inter",
@@ -147,27 +146,21 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                   ),
                   const SizedBox(height: 10),
                   ProgramDialogWidget(
-                    controllerSeats: controllerSeats,
-                    controllerPin: controllerPin,
-                    controllerBack: controllerBack,
-                    controllerHandle: controllerHandle,
-                    onPressed: () async {
-                      final SharedPreferences prefs = SharedPrefsWidget.prefs;
-                      await prefs.setString(
-                          AppConsts.seats, controllerSeats.text);
-                      await prefs.setString(AppConsts.pin, controllerPin.text);
-                      await prefs.setString(
-                          AppConsts.back, controllerBack.text);
-                      await prefs.setString(
-                          AppConsts.handle, controllerHandle.text);
+                    onPressed: (settings) async {
+                      // final SharedPreferences prefs = SharedPrefsWidget.prefs;
+                      // await prefs.setString(
+                      //     AppConsts.seats, controllerSeats.text);
+                      // await prefs.setString(AppConsts.pin, controllerPin.text);
+                      // await prefs.setString(
+                      //     AppConsts.back, controllerBack.text);
+                      // await prefs.setString(
+                      //     AppConsts.handle, controllerHandle.text);
                       Navigator.of(context).pop();
-                      setState(() {});
+                      setState(() {
+                        _programSettings = settings;
+                      });
                     },
-                    child: (isGridView = !isGridView)
-                        ? const BlocProgramWidget()
-                        : SvgPicture.asset(
-                            AppSvgs.settingsProgram,
-                          ),
+                    programSettings: _programSettings,
                   ),
                   const SizedBox(height: 40),
                   Padding(

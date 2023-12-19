@@ -1,24 +1,26 @@
 import 'dart:async';
 
+import 'package:fitness_training/data/models/program_settings_model.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
+import 'package:fitness_training/presentation/widgets/bloc_program_widget.dart';
 import 'package:fitness_training/presentation/widgets/settings_for_widget.dart';
+import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ProgramDialogWidget extends StatelessWidget {
-  const ProgramDialogWidget(
-      {super.key,
-      required this.controllerSeats,
-      required this.controllerPin,
-      required this.controllerBack,
-      required this.controllerHandle,
-      required this.onPressed,
-      required this.child});
-  final Widget child;
-  final Function() onPressed;
-  final TextEditingController controllerSeats;
-  final TextEditingController controllerPin;
-  final TextEditingController controllerBack;
-  final TextEditingController controllerHandle;
+  ProgramDialogWidget({
+    super.key,
+    required this.onPressed,
+    required this.programSettings,
+  });
+
+  final ValueChanged<ProgramSettingsModel> onPressed;
+  final TextEditingController controllerSeats = TextEditingController();
+  final TextEditingController controllerPin = TextEditingController();
+  final TextEditingController controllerBack = TextEditingController();
+  final TextEditingController controllerHandle = TextEditingController();
+  final ProgramSettingsModel programSettings;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,9 @@ class ProgramDialogWidget extends StatelessWidget {
                     Radius.circular(15),
                   ),
                 ),
-                title: const Text(
+                title: Text(
                   textAlign: TextAlign.center,
-                  "Settings for B5 (A)",
+                  "Settings for ${programSettings.apparat.name} (A)",
                 ),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -108,7 +110,39 @@ class ProgramDialogWidget extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            onPressed: onPressed,
+                            onPressed: () => onPressed.call(
+                              ProgramSettingsModel(
+                                apparat: programSettings.apparat,
+                                proporties: [
+                                  ProgramSettingsProporties(
+                                    name: 'Seats',
+                                    value:
+                                        int.tryParse(controllerSeats.text) ?? 0,
+                                    type: ProportiesType.seats,
+                                  ),
+                                  ProgramSettingsProporties(
+                                    name: 'Back',
+                                    value:
+                                        int.tryParse(controllerBack.text) ?? 0,
+                                    type: ProportiesType.back,
+                                  ),
+                                  ProgramSettingsProporties(
+                                    name: 'Handle',
+                                    value:
+                                        int.tryParse(controllerHandle.text) ??
+                                            0,
+                                    type: ProportiesType.handle,
+                                  ),
+                                  ProgramSettingsProporties(
+                                    name: 'Pin',
+                                    value:
+                                        int.tryParse(controllerPin.text) ?? 0,
+                                    type: ProportiesType.pin,
+                                  ),
+                                ],
+                                weight: 0,
+                              ),
+                            ),
                             child: const Text(
                               "Ok",
                               textAlign: TextAlign.center,
@@ -126,7 +160,15 @@ class ProgramDialogWidget extends StatelessWidget {
           ),
         );
       },
-      child: child,
+      child: (programSettings.proporties.isNotEmpty)
+          ? BlocProgramWidget(
+              programSettings: programSettings,
+            )
+          : SvgPicture.asset(
+              AppSvgs.settingsProgram,
+              height: screenWidth > 600 ? 350 : null,
+              width: screenWidth > 600 ? 350 : null,
+            ),
     );
   }
 }

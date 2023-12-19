@@ -1,11 +1,16 @@
 import 'package:fitness_training/core/const.dart';
+import 'package:fitness_training/data/models/program_settings_model.dart';
 import 'package:fitness_training/presentation/widgets/program_information_widget.dart';
 import 'package:fitness_training/presentation/widgets/shared_prefs_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class BlocProgramWidget extends StatelessWidget {
-  const BlocProgramWidget({super.key});
+  final ProgramSettingsModel programSettings;
+  const BlocProgramWidget({
+    super.key,
+    required this.programSettings,
+  });
 
   @override
   Widget build(BuildContext context) {
