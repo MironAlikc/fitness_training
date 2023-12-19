@@ -35,7 +35,7 @@ class SelectTrainingScreen extends StatelessWidget {
               "Archieve",
               style: TextStyle(
                 color: Color(0xFFFF5447),
-                fontSize: 18,
+                fontSize: 18, 
                 fontFamily: "Inter",
                 fontWeight: FontWeight.w700,
                 height: 0,
@@ -91,12 +91,8 @@ class SelectTrainingScreen extends StatelessWidget {
             ),
             const Spacer(),
             ButtonWidget(
-              onPressed: () {
-                // AutoRouter.of(context).push(
-                //   SelectTrainingRoute(selectedTrainers: selectedLetters),
-                // );
-              },
-              title: "Next",
+              onPressed: () {},
+              title: "Save",
             ),
             const SizedBox(height: 20),
           ],
