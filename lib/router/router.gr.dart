@@ -61,13 +61,20 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<SelectTrainingRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: SelectTrainingScreen(selectedTrainers: args.selectedTrainers),
+        child: SelectTrainingScreen(
+          key: args.key,
+          apparatus: args.apparatus,
+        ),
       );
     },
     SettingsProgramRoute.name: (routeData) {
+      final args = routeData.argsAs<SettingsProgramRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SettingsProgramScreen(),
+        child: SettingsProgramScreen(
+          key: args.key,
+          programSettings: args.programSettings,
+        ),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -92,20 +99,6 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [ChangeInfoScreen]
-class ChangeInfoRoute extends PageRouteInfo<void> {
-  const ChangeInfoRoute({List<PageRouteInfo>? children})
-      : super(
-          ChangeInfoRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ChangeInfoRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [CalendarScreen]
 class CalendarRoute extends PageRouteInfo<void> {
   const CalendarRoute({List<PageRouteInfo>? children})
@@ -115,6 +108,20 @@ class CalendarRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CalendarRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChangeInfoScreen]
+class ChangeInfoRoute extends PageRouteInfo<void> {
+  const ChangeInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          ChangeInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChangeInfoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -193,11 +200,15 @@ class ProgramRoute extends PageRouteInfo<void> {
 /// [SelectTrainingScreen]
 class SelectTrainingRoute extends PageRouteInfo<SelectTrainingRouteArgs> {
   SelectTrainingRoute({
-    required List<String> selectedTrainers,
+    Key? key,
+    required List<TrainingApparatusModel> apparatus,
     List<PageRouteInfo>? children,
   }) : super(
           SelectTrainingRoute.name,
-          args: SelectTrainingRouteArgs(selectedTrainers: selectedTrainers),
+          args: SelectTrainingRouteArgs(
+            key: key,
+            apparatus: apparatus,
+          ),
           initialChildren: children,
         );
 
@@ -208,28 +219,57 @@ class SelectTrainingRoute extends PageRouteInfo<SelectTrainingRouteArgs> {
 }
 
 class SelectTrainingRouteArgs {
-  const SelectTrainingRouteArgs({required this.selectedTrainers});
+  const SelectTrainingRouteArgs({
+    this.key,
+    required this.apparatus,
+  });
 
-  final List<String> selectedTrainers;
+  final Key? key;
+
+  final List<TrainingApparatusModel> apparatus;
 
   @override
   String toString() {
-    return 'SelectTrainingRouteArgs{selectedTrainers: $selectedTrainers}';
+    return 'SelectTrainingRouteArgs{key: $key, apparatus: $apparatus}';
   }
 }
 
 /// generated route for
 /// [SettingsProgramScreen]
-class SettingsProgramRoute extends PageRouteInfo<void> {
-  const SettingsProgramRoute({List<PageRouteInfo>? children})
-      : super(
+class SettingsProgramRoute extends PageRouteInfo<SettingsProgramRouteArgs> {
+  SettingsProgramRoute({
+    Key? key,
+    required ProgramSettingsModel programSettings,
+    List<PageRouteInfo>? children,
+  }) : super(
           SettingsProgramRoute.name,
+          args: SettingsProgramRouteArgs(
+            key: key,
+            programSettings: programSettings,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SettingsProgramRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SettingsProgramRouteArgs> page =
+      PageInfo<SettingsProgramRouteArgs>(name);
+}
+
+class SettingsProgramRouteArgs {
+  const SettingsProgramRouteArgs({
+    this.key,
+    required this.programSettings,
+  });
+
+  final Key? key;
+
+  final ProgramSettingsModel programSettings;
+
+  @override
+  String toString() {
+    return 'SettingsProgramRouteArgs{key: $key, programSettings: $programSettings}';
+  }
 }
 
 /// generated route for

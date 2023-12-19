@@ -1,4 +1,6 @@
 import "package:auto_route/auto_route.dart";
+import "package:fitness_training/data/models/program_settings_model.dart";
+import "package:fitness_training/data/models/training_apparatus_model.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:fitness_training/router/router.dart";
@@ -8,9 +10,9 @@ import "package:flutter/material.dart";
 class SelectTrainingScreen extends StatelessWidget {
   const SelectTrainingScreen({
     super.key,
-    required this.selectedTrainers,
+    required this.apparatus,
   });
-  final List<String> selectedTrainers;
+  final List<TrainingApparatusModel> apparatus;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class SelectTrainingScreen extends StatelessWidget {
               "Archieve",
               style: TextStyle(
                 color: Color(0xFFFF5447),
-                fontSize: 18, 
+                fontSize: 18,
                 fontFamily: "Inter",
                 fontWeight: FontWeight.w700,
                 height: 0,
@@ -65,18 +67,24 @@ class SelectTrainingScreen extends StatelessWidget {
               alignment: WrapAlignment.center,
               spacing: 10,
               runSpacing: 5,
-              children: selectedTrainers.map((trainer) {
+              children: apparatus.map((apparat) {
                 return GestureDetector(
                   onTap: () {
                     AutoRouter.of(context).push(
-                      const SettingsProgramRoute(),
+                      SettingsProgramRoute(
+                        programSettings: ProgramSettingsModel(
+                          apparat: apparat,
+                          proporties: [],
+                          weight: 0,
+                        ),
+                      ),
                     );
                   },
                   child: SizedBox(
                     width: 100,
                     height: 100,
                     child: Text(
-                      trainer,
+                      apparat.name,
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 40,

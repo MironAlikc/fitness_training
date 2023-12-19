@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/data/models/training_apparatus_model.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
@@ -14,37 +15,7 @@ class CreateProgramScreen extends StatefulWidget {
 }
 
 class _CreateProgramScreenState extends State<CreateProgramScreen> {
-  List<String> letters = [
-    "A1",
-    "A2",
-    "A3",
-    "A4",
-    "B1",
-    "B5",
-    "B6",
-    "B8",
-    "C1",
-    "C3",
-    "C5",
-    "C7",
-    "D5",
-    "D6",
-    "D7",
-    "E1",
-    "E2",
-    "E3",
-    "E4",
-    "E5",
-    "F1",
-    "F2",
-    "F3",
-    "G1",
-    "G3",
-    "H1",
-    "H2",
-    "J1",
-  ];
-  List<String> selectedLetters = [];
+  final List<TrainingApparatusModel> _selectedApparatus = [];
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -78,14 +49,14 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
                 spacing: 40,
                 runSpacing: 20,
                 children: [
-                  for (final letter in letters)
+                  for (final apparat in apparatusModels)
                     InkWell(
                       onTap: () {
                         setState(() {
-                          if (selectedLetters.contains(letter)) {
-                            selectedLetters.remove(letter);
+                          if (_selectedApparatus.contains(apparat)) {
+                            _selectedApparatus.remove(apparat);
                           } else {
-                            selectedLetters.add(letter);
+                            _selectedApparatus.add(apparat);
                           }
                         });
                       },
@@ -93,16 +64,16 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
                         width: screenWidth > 600 ? 130 : 65,
                         height: screenWidth > 600 ? 110 : 55,
                         decoration: BoxDecoration(
-                          color: selectedLetters.contains(letter)
+                          color: _selectedApparatus.contains(apparat)
                               ? const Color(0xFFC8CE37)
                               : null,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Center(
                           child: Text(
-                            letter,
+                            apparat.name,
                             style: TextStyle(
-                              color: selectedLetters.contains(letter)
+                              color: _selectedApparatus.contains(apparat)
                                   ? Colors.white
                                   : const Color(0xFFA3A3A3),
                               fontSize: screenWidth > 600 ? 80 : 40,
@@ -118,11 +89,12 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
               //  const Spacer(),
               const SizedBox(height: 30),
               ButtonWidget(
-                onPressed: selectedLetters.isNotEmpty
+                onPressed: _selectedApparatus.isNotEmpty
                     ? () {
                         AutoRouter.of(context).push(
                           SelectTrainingRoute(
-                              selectedTrainers: selectedLetters),
+                            apparatus: _selectedApparatus,
+                          ),
                         );
                       }
                     : null,

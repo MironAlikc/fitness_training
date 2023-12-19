@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/data/models/program_settings_model.dart';
+import 'package:fitness_training/data/models/training_apparatus_model.dart';
 import 'package:fitness_training/presentation/screens/calendar/calendar_screen.dart';
 import 'package:fitness_training/presentation/screens/calendar/table_calendar_screen.dart';
 import 'package:fitness_training/presentation/screens/contacts/contacts_screen.dart';
@@ -11,6 +13,7 @@ import 'package:fitness_training/presentation/screens/login_screen.dart';
 import 'package:fitness_training/presentation/screens/settings/change_info_screen.dart';
 import 'package:fitness_training/presentation/screens/settings/settings_screen.dart';
 import 'package:fitness_training/presentation/screens/splash_screen.dart';
+import 'package:flutter/material.dart';
 
 part 'router.gr.dart';
 
