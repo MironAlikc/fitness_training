@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
@@ -115,30 +116,30 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                     fontSize: 16.0,
                   ),
                   selectedDecoration: BoxDecoration(
-                    color: Color(0xFFC8CE37),
+                    color: AppColors.colorMain,
                     shape: BoxShape.circle,
                   ),
                   rangeStartTextStyle: TextStyle(
-                    color: Colors.black,
+                    color: AppColors.black,
                     fontSize: 16.0,
                   ),
                   rangeEndDecoration: BoxDecoration(
-                    color: Color(0xFFC8CE37),
+                    color: AppColors.colorMain,
                     shape: BoxShape.circle,
                   ),
                   rangeStartDecoration: BoxDecoration(
-                    color: Color(0xFFC8CE37),
+                    color: AppColors.colorMain,
                     shape: BoxShape.circle,
                   ),
                   rangeEndTextStyle: TextStyle(
-                    color: Colors.black,
+                    color: AppColors.black,
                     fontSize: 16.0,
                   ),
 
                   todayTextStyle: TextStyle(
-                    color: Colors.black,
-                    backgroundColor: Colors.black,
-                    decorationColor: Colors.green,
+                    color: AppColors.black,
+                    backgroundColor: AppColors.black,
+                    decorationColor: AppColors.green,
                     decorationStyle: TextDecorationStyle.dashed,
                   ),
                   //  outsideDaysVisible: false,

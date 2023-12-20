@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/presentation/widgets/tab_bar_training_widget.dart';
 import 'package:fitness_training/presentation/widgets/user_cart_widget.dart';
@@ -12,9 +13,11 @@ class ProgramScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 70,
+        leadingWidth: screenWidth > 600 ? 100 : 80,
         leading: IconButton(
           icon: Image.asset(
             AppPngs.back,
@@ -30,16 +33,16 @@ class ProgramScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CircleAvatar(
-                radius: 70,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage(
+              CircleAvatar(
+                radius: screenWidth > 600 ? 160 : 80,
+                backgroundColor: AppColors.white,
+                backgroundImage: const AssetImage(
                   AppPngs.user,
                 ),
               ),
               const SizedBox(height: 11),
               const UserCardWidget(),
-              const SizedBox(height: 50),
+              SizedBox(height: screenWidth > 600 ? 50 : 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ButtonWidget(

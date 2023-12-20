@@ -1,3 +1,4 @@
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/text_parameters_user_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,18 +13,20 @@ class UserCardWidget extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(
+        horizontal: screenWidth > 600 ? 40 : 20,
+      ),
       child: Container(
         width: double.infinity,
         height: 180,
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
           shadows: const [
             BoxShadow(
-              color: Color(0x26000000),
+              color: AppColors.shadows,
               blurRadius: 4,
               offset: Offset(0, 4),
             ),
@@ -33,10 +36,10 @@ class UserCardWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               "Andrew Brown",
               textAlign: TextAlign.center,
-              style: AppFonts.w800s30,
+              style: screenWidth > 600 ? AppFonts.w800s40 : AppFonts.w800s30,
             ),
             const TextParametersUserWidget(
               textOne: 'Phone number ',
@@ -64,10 +67,10 @@ class UserCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            const Text(
+            Text(
               "Some notes about Andrew",
               textAlign: TextAlign.center,
-              style: AppFonts.w400s18,
+              style: screenWidth > 600 ? AppFonts.w400s24 : AppFonts.w400s18,
             ),
             const SizedBox(height: 10),
           ],

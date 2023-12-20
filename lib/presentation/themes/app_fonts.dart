@@ -32,6 +32,13 @@ abstract class AppFonts {
     fontFamily: "Inter",
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle w400s24 = TextStyle(
+    color: Color(0xFFA3A3A3),
+    fontSize: 24,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w400,
+  );
+
   static const TextStyle w700s19 = TextStyle(
     color: Color(0xFF1E1E1E),
     fontSize: 19,
@@ -77,6 +84,14 @@ abstract class AppFonts {
   static const TextStyle w500s24 = TextStyle(
     color: Color(0xFF1E1E1E),
     fontSize: 24,
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w500,
+    height: 0,
+  );
+
+  static const TextStyle w500s30 = TextStyle(
+    color: Color(0xFFA3A3A3),
+    fontSize: 30,
     fontFamily: 'Inter',
     fontWeight: FontWeight.w500,
     height: 0,
