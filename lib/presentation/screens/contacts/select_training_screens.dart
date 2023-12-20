@@ -1,6 +1,8 @@
 import "package:auto_route/auto_route.dart";
 import "package:fitness_training/data/models/program_settings_model.dart";
 import "package:fitness_training/data/models/training_apparatus_model.dart";
+import "package:fitness_training/presentation/themes/app_colors.dart";
+import "package:fitness_training/presentation/themes/app_fonts.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:fitness_training/router/router.dart";
@@ -16,11 +18,12 @@ class SelectTrainingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print(selectedTrainers);
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 70,
-        backgroundColor: Colors.white,
+        leadingWidth: screenWidth > 600 ? 100 : 80,
+        backgroundColor: AppColors.white,
         elevation: 0,
         leading: IconButton(
           icon: Image.asset(
@@ -33,14 +36,10 @@ class SelectTrainingScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {},
-            child: const Text(
+            child: Text(
               "Archieve",
-              style: TextStyle(
-                color: Color(0xFFFF5447),
-                fontSize: 18,
-                fontFamily: "Inter",
-                fontWeight: FontWeight.w700,
-                height: 0,
+              style: AppFonts.w700s18.copyWith(
+                color: AppColors.rid,
               ),
             ),
           ),
@@ -52,13 +51,7 @@ class SelectTrainingScreen extends StatelessWidget {
             const Text(
               "Program A",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF1E1E1E),
-                fontSize: 24,
-                fontFamily: "Inter",
-                fontWeight: FontWeight.w800,
-                height: 0,
-              ),
+              style: AppFonts.w800s24,
             ),
             const SizedBox(height: 20),
             Wrap(
@@ -85,13 +78,7 @@ class SelectTrainingScreen extends StatelessWidget {
                     height: 100,
                     child: Text(
                       apparat.name,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
+                      style: AppFonts.w500s40,
                     ),
                   ),
                 );

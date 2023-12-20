@@ -35,6 +35,7 @@ flutter:
   assets:
     - assets/pngs/
     - assets/svgs/
+    - assets/gif/
 
   # fonts:
   #   - family: Schyler

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/data/models/training_apparatus_model.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
@@ -23,7 +24,7 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
     return Scaffold(
       appBar: AppBar(
         leadingWidth: screenWidth > 600 ? 100 : 80,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         elevation: 0,
         leading: IconButton(
           icon: Image.asset(
@@ -46,7 +47,7 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
               ),
               const SizedBox(height: 20),
               Wrap(
-                spacing: 40,
+                spacing: 20,
                 runSpacing: 20,
                 children: [
                   for (final apparat in apparatusModels)
@@ -65,7 +66,7 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
                         height: screenWidth > 600 ? 110 : 55,
                         decoration: BoxDecoration(
                           color: _selectedApparatus.contains(apparat)
-                              ? const Color(0xFFC8CE37)
+                              ? AppColors.colorMain
                               : null,
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -74,8 +75,8 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
                             apparat.name,
                             style: TextStyle(
                               color: _selectedApparatus.contains(apparat)
-                                  ? Colors.white
-                                  : const Color(0xFFA3A3A3),
+                                  ? AppColors.white
+                                  : AppColors.grey,
                               fontSize: screenWidth > 600 ? 80 : 40,
                               fontFamily: "Inter",
                               fontWeight: FontWeight.w500,
