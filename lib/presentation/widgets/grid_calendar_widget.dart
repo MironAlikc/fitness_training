@@ -1,3 +1,5 @@
+import 'package:fitness_training/presentation/themes/app_colors.dart';
+import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +11,7 @@ class GridCalendarWidget extends StatelessWidget {
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 5,
-      ),
+    return Center(
       child: Stack(
         children: [
           InkWell(
@@ -21,34 +19,21 @@ class GridCalendarWidget extends StatelessWidget {
             child: const Column(
               children: [
                 CircleAvatar(
-                  radius: 37,
-                  backgroundColor: Colors.white,
+                  radius: 75,
+                  backgroundColor: AppColors.white,
                   backgroundImage: AssetImage(
                     AppPngs.user,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 Text(
-                  "Anna Brown",
-                  style: TextStyle(
-                    color: Color(0xFF1E1E1E),
-                    fontSize: 18,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
+                  "Aleksander",
+                  style: AppFonts.w500s24,
                 ),
-                SizedBox(width: 18),
+                SizedBox(width: 10),
                 Text(
-                  "9.30 AM",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFFA3A3A3),
-                    fontSize: 16,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
+                  '9.30 AM',
+                  style: AppFonts.w700s30,
                 ),
                 SizedBox(height: 10),
               ],

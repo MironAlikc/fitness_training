@@ -5,6 +5,7 @@ import 'package:fitness_training/presentation/themes/theme.dart';
 import 'package:fitness_training/presentation/widgets/shared_prefs_widget.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyApp extends StatefulWidget {
@@ -18,6 +19,10 @@ class _MyAppState extends State<MyApp> {
   final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(

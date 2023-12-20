@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var _selectedPageIndex = 0;
-  final Color _inactiveColor = const Color(0xFF1E1E1E);
-  final Color _activeColor = const Color(0xFF587DBD);
+  final Color _inactiveColor = AppColors.black;
+  final Color _activeColor = AppColors.lightBlue;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +30,17 @@ class _HomeScreenState extends State<HomeScreen> {
         final tabRouter = AutoTabsRouter.of(context);
         final mediaQuery = MediaQuery.of(context);
         final screenWidth = mediaQuery.size.width;
+        final double width = screenWidth > 600 ? 60 : 30;
+        final double height = screenWidth > 600 ? 60 : 30;
         return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
             selectedFontSize: screenWidth > 600 ? 28 : 16,
             currentIndex: tabRouter.activeIndex,
             onTap: (index) => _openPage(index, tabRouter),
-            backgroundColor: Colors.white,
-            unselectedItemColor: const Color(0xFF1E1E1E),
-            selectedItemColor: const Color(0xFF587DBD),
+            backgroundColor: AppColors.white,
+            unselectedItemColor: _inactiveColor,
+            selectedItemColor: _activeColor,
             selectedLabelStyle: const TextStyle(
               fontWeight: FontWeight.w500,
             ),
@@ -45,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   AppSvgs.calendar,
-                  width: screenWidth > 600 ? 60 : 34,
-                  height: screenWidth > 600 ? 60 : 34,
+                  width: width,
+                  height: height,
                   colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 0 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),
@@ -56,8 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   AppSvgs.contacts,
-                  width: screenWidth > 600 ? 60 : 34,
-                  height: screenWidth > 600 ? 60 : 34,
+                  width: width,
+                  height: height,
                   colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 1 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),
@@ -67,8 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   AppSvgs.settings,
-                  width: screenWidth > 600 ? 60 : 34,
-                  height: screenWidth > 600 ? 60 : 34,
+                  width: width,
+                  height: height,
                   colorFilter: ColorFilter.mode(
                       _selectedPageIndex == 2 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),

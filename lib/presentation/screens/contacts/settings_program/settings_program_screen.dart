@@ -1,15 +1,10 @@
-// ignore_for_file: use_build_context_synchronously
-
 import "package:auto_route/auto_route.dart";
-import "package:fitness_training/core/const.dart";
 import "package:fitness_training/data/models/program_settings_model.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
-import "package:fitness_training/presentation/widgets/bloc_program_widget.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/presentation/widgets/custom_timer_widget.dart";
 import "package:fitness_training/presentation/widgets/history_widget.dart";
 import "package:fitness_training/presentation/widgets/program_dialog_widget.dart";
-import "package:fitness_training/presentation/widgets/shared_prefs_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
 

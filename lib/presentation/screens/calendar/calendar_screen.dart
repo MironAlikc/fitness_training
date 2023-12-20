@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/grid_calendar_widget.dart';
 import 'package:fitness_training/presentation/widgets/list_calendar_widget.dart';
@@ -22,15 +23,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
     final TextEditingController controller = TextEditingController();
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
+    final double width = screenWidth > 600 ? 50 : 34;
+    final double height = screenWidth > 600 ? 50 : 34;
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
           child: Stack(
             children: [
               screenWidth > 600
                   ? GridView.builder(
-                      padding: const EdgeInsets.only(top: 50),
+                      padding: const EdgeInsets.only(top: 70),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
@@ -40,7 +45,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
+                        crossAxisCount: 4,
                         mainAxisSpacing: 0.0,
                         crossAxisSpacing: 0.0,
                       ),
@@ -60,8 +65,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   suffixIcon: IconButton(
                     icon: Image.asset(
                       AppPngs.calendar,
-                      height: screenWidth > 600 ? 50 : 34,
-                      width: screenWidth > 600 ? 50 : 34,
+                      height: height,
+                      width: width,
                     ),
                     onPressed: () {
                       AutoRouter.of(context).push(
@@ -72,13 +77,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   hintText: "Search",
                   hintStyle:
                       screenWidth > 600 ? AppFonts.w700s26 : AppFonts.w400s18,
-                  fillColor: const Color(0xFFF2F2F2).withAlpha(235),
+                  fillColor: AppColors.colotSearch.withAlpha(235),
                   filled: true,
                   border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
