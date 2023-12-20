@@ -1,3 +1,5 @@
+import "package:fitness_training/presentation/themes/app_colors.dart";
+import "package:fitness_training/presentation/themes/app_fonts.dart";
 import "package:flutter/material.dart";
 
 class TabBarTrainingWidget extends StatefulWidget {
@@ -11,37 +13,25 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
   List<Widget> tabItems = [
     const Text(
       "Program A",
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 24,
-        fontFamily: "Inter",
-        fontWeight: FontWeight.w500,
-        height: 0,
-      ),
+      style: AppFonts.w500s24,
     ),
     const Text(
       "Program B",
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 24,
-        fontFamily: "Inter",
-        fontWeight: FontWeight.w500,
-        height: 0,
-      ),
+      style: AppFonts.w500s24,
     ),
   ];
   int currentTabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Column(
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         DefaultTabController(
           initialIndex: 0,
           length: 2,
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TabBar(
                 onTap: (value) {
@@ -49,35 +39,35 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
                   setState(() {});
                 },
                 tabAlignment: TabAlignment.center,
-                labelColor: const Color(0xFF1E1E1E),
-                unselectedLabelColor: const Color(0xFFA3A3A3),
-                indicatorColor: Colors.white,
+                labelColor: AppColors.black,
+                unselectedLabelColor: AppColors.grey,
+                indicatorColor: AppColors.white,
                 indicatorSize: TabBarIndicatorSize.tab,
                 labelPadding: const EdgeInsets.all(10),
-                dividerColor: Colors.white,
-                tabs: const [
+                dividerColor: AppColors.white,
+                tabs: [
                   Tab(
                     height: 50,
                     child: Text(
                       "Current Program",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
+                      style: screenWidth > 600
+                          ? AppFonts.w700s30.copyWith(
+                              color: AppColors.black,
+                            )
+                          : AppFonts.w700s24.copyWith(
+                              color: AppColors.black,
+                            ),
                     ),
                   ),
                   Tab(
                     height: 50,
                     child: Text(
                       "Archieve",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
+                      style: screenWidth > 600
+                          ? AppFonts.w500s30
+                          : AppFonts.w500s24.copyWith(
+                              color: AppColors.grey,
+                            ),
                     ),
                   ),
                 ],

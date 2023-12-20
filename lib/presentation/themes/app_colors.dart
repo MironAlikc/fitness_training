@@ -9,4 +9,9 @@ abstract class AppColors {
   static const lightBlue = Color(0xFF587DBD);
   static const colotSearch = Color(0xFFF2F2F2);
   static const white = Colors.white;
+  static const colorMain = Color(0xFFC8CE37);
+  static const green = Colors.green;
+  static const shadows = Color(0x26000000);
+
+  static const grey = Color(0xFFA3A3A3);
 }

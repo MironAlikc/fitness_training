@@ -1,3 +1,4 @@
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class ButtonWidget extends StatelessWidget {
       height: screenWidth > 600 ? 80 : 60,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFC8CE37),
+          backgroundColor: AppColors.colorMain,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40),
           ),

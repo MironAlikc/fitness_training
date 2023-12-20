@@ -1,3 +1,4 @@
+import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
@@ -6,11 +7,7 @@ class GridContactsWidget extends StatelessWidget {
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 5,
-      ),
+    return Center(
       child: Stack(
         children: [
           InkWell(
@@ -18,7 +15,7 @@ class GridContactsWidget extends StatelessWidget {
             child: const Column(
               children: [
                 CircleAvatar(
-                  radius: 50,
+                  radius: 75,
                   backgroundColor: Colors.white,
                   backgroundImage: AssetImage(
                     AppPngs.userImage,
@@ -26,15 +23,9 @@ class GridContactsWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Aleksander",
-                  style: TextStyle(
-                    color: Color(0xFF1E1E1E),
-                    fontSize: 18,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
-                ),
+                  'Aleksander',
+                  style: AppFonts.w500s24,
+                )
               ],
             ),
           ),

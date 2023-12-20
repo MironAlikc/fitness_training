@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
+import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/grid_contacts_widget.dart';
 import 'package:fitness_training/presentation/widgets/list_contacts_widget.dart';
 import 'package:fitness_training/router/router.dart';
@@ -27,11 +29,9 @@ class _ContactsScreenState extends State<ContactsScreen> {
           ),
           child: Stack(
             children: [
-              Builder(
-                builder: (context) {
-                  if (screenWidth > 600) {
-                    return GridView.builder(
-                      padding: const EdgeInsets.only(top: 50),
+              screenWidth > 600
+                  ? GridView.builder(
+                      padding: const EdgeInsets.only(top: 70),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
@@ -45,13 +45,12 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       ),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
+                        crossAxisCount: 4,
                         mainAxisSpacing: 0.0,
                         crossAxisSpacing: 0.0,
                       ),
-                    );
-                  } else {
-                    return ListView.builder( 
+                    )
+                  : ListView.builder(
                       padding: const EdgeInsets.only(top: 50),
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
@@ -64,33 +63,25 @@ class _ContactsScreenState extends State<ContactsScreen> {
                           );
                         },
                       ),
-                    );
-                  }
-                },
-              ),
+                    ),
               TextField(
                 decoration: InputDecoration(
                   hintText: "Search",
-                  hintStyle: const TextStyle(
-                    color: Color(0xFFA3A3A3),
-                    fontSize: 18,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
-                  fillColor: const Color(0xFFF2F2F2).withAlpha(235),
+                  hintStyle:
+                      screenWidth > 600 ? AppFonts.w700s26 : AppFonts.w400s18,
+                  fillColor: AppColors.colotSearch.withAlpha(235),
                   filled: true,
                   border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),

@@ -89,7 +89,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
