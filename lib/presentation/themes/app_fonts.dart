@@ -1,3 +1,4 @@
+import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppFonts {
@@ -93,6 +94,13 @@ abstract class AppFonts {
     color: Color(0xFFA3A3A3),
     fontSize: 30,
     fontFamily: 'Inter',
+    fontWeight: FontWeight.w500,
+    height: 0,
+  );
+  static const TextStyle w500s40 = TextStyle(
+    color: Colors.black,
+    fontSize: 40,
+    fontFamily: "Inter",
     fontWeight: FontWeight.w500,
     height: 0,
   );
