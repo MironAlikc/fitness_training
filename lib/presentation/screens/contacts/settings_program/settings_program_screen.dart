@@ -1,6 +1,7 @@
 import "package:auto_route/auto_route.dart";
 import "package:fitness_training/data/models/program_settings_model.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
+import "package:fitness_training/presentation/themes/app_fonts.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/presentation/widgets/custom_timer_widget.dart";
 import "package:fitness_training/presentation/widgets/history_widget.dart";
@@ -35,16 +36,17 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
+    final screenHeight = mediaQuery.size.height;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 70,
+        leadingWidth: screenWidth > 600 ? 100 : 80,
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: Image.asset(
             AppPngs.back,
-            height: (screenWidth > 600) ? 400 : 150,
-            width: (screenWidth > 600) ? 400 : 250,
+            height: screenHeight > 750 ? 150 : 80,
+            width: screenWidth > 600 ? 250 : 120,
           ),
           onPressed: () {
             AutoRouter.of(context).pop();
@@ -52,49 +54,97 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: (screenWidth > 600)
-            ? Column(
-                children: [
-                  Text(
-                    "Settings for ${_programSettings.apparat.name} (A)",
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Color(0xFF1E1E1E),
-                      fontSize: 24,
-                      fontFamily: "Inter",
-                      fontWeight: FontWeight.w800,
-                      height: 0,
-                    ),
-                  ),
-                  const SizedBox(height: 46),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 80),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ProgramDialogWidget(
-                          onPressed: (settings) async {
-                            // final SharedPreferences prefs =
-                            //     SharedPrefsWidget.prefs;
-                            // await prefs.setString(
-                            //     AppConsts.seats, controllerSeats.text);
-                            // await prefs.setString(
-                            //     AppConsts.pin, controllerPin.text);
-                            // await prefs.setString(
-                            //     AppConsts.back, controllerBack.text);
-                            // await prefs.setString(
-                            //     AppConsts.handle, controllerHandle.text);
+          child: Column(
+        children: [
+          Text(
+            "Settings for ${_programSettings.apparat.name} (A)",
+            textAlign: TextAlign.center,
+            style: AppFonts.w800s24,
+          ),
+          const SizedBox(height: 46),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth > 600 ? 80 : 16,
+            ),
+            child: screenWidth > 600
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ProgramDialogWidget(
+                        onPressed: (settings) async {
+                          // final SharedPreferences prefs =
+                          //     SharedPrefsWidget.prefs;
+                          // await prefs.setString(
+                          //     AppConsts.seats, controllerSeats.text);
+                          // await prefs.setString(
+                          //     AppConsts.pin, controllerPin.text);
+                          // await prefs.setString(
+                          //     AppConsts.back, controllerBack.text);
+                          // await prefs.setString(
+                          //     AppConsts.handle, controllerHandle.text);
 
-                            Navigator.of(context).pop();
-                            setState(() {
-                              _programSettings = settings;
-                            });
-                          },
-                          programSettings: _programSettings,
-                        ),
-                        Column(
+                          Navigator.of(context).pop();
+                          setState(() {
+                            _programSettings = settings;
+                          });
+                        },
+                        programSettings: _programSettings,
+                      ),
+                      Column(
+                        children: [
+                          CustomTimerWidget(
+                            title: "Timer",
+                            image: AppSvgs.timer,
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const StopwatchTimerScreens(),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          CustomTimerWidget(
+                            title: "Metronom",
+                            image: AppSvgs.metronom,
+                            onPressed: () {},
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                : Column(
+                    children: [
+                      ProgramDialogWidget(
+                        onPressed: (settings) async {
+                          // final SharedPreferences prefs =
+                          //     SharedPrefsWidget.prefs;
+                          // await prefs.setString(
+                          //     AppConsts.seats, controllerSeats.text);
+                          // await prefs.setString(
+                          //     AppConsts.pin, controllerPin.text);
+                          // await prefs.setString(
+                          //     AppConsts.back, controllerBack.text);
+                          // await prefs.setString(
+                          //     AppConsts.handle, controllerHandle.text);
+
+                          Navigator.of(context).pop();
+                          setState(() {
+                            _programSettings = settings;
+                          });
+                        },
+                        programSettings: _programSettings,
+                      ),
+                      const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomTimerWidget(
+                              title: "Timer",
+                              image: AppSvgs.timer,
                               onPressed: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -103,99 +153,27 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                                   ),
                                 );
                               },
-                              title: "Timer",
-                              image: AppSvgs.timer,
                             ),
-                            const SizedBox(height: 20),
                             CustomTimerWidget(
-                              onPressed: () {},
                               title: "Metronom",
                               image: AppSvgs.metronom,
+                              onPressed: () {},
                             ),
                           ],
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  const HistoryWidget(),
-                  const SizedBox(height: 80),
-                  ButtonWidget(
-                    onPressed: () {},
-                    title: 'Next',
-                  )
-                ],
-              )
-            : Column(
-                children: [
-                  Text(
-                    "Settings for ${_programSettings.apparat.name} (A)",
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Color(0xFF1E1E1E),
-                      fontSize: 24,
-                      fontFamily: "Inter",
-                      fontWeight: FontWeight.w800,
-                      height: 0,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  ProgramDialogWidget(
-                    onPressed: (settings) async {
-                      // final SharedPreferences prefs = SharedPrefsWidget.prefs;
-                      // await prefs.setString(
-                      //     AppConsts.seats, controllerSeats.text);
-                      // await prefs.setString(AppConsts.pin, controllerPin.text);
-                      // await prefs.setString(
-                      //     AppConsts.back, controllerBack.text);
-                      // await prefs.setString(
-                      //     AppConsts.handle, controllerHandle.text);
-                      Navigator.of(context).pop();
-                      setState(() {
-                        _programSettings = settings;
-                      });
-                    },
-                    programSettings: _programSettings,
-                  ),
-                  const SizedBox(height: 40),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomTimerWidget(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const StopwatchTimerScreens(),
-                              ),
-                            );
-                          },
-                          title: "Timer",
-                          image: AppSvgs.timer,
                         ),
-                        CustomTimerWidget(
-                          onPressed: () {},
-                          title: "Metronom",
-                          image: AppSvgs.metronom,
-                        ),
-                      ],
-                    ),
+                      )
+                    ],
                   ),
-                  const SizedBox(height: 40),
-                  const HistoryWidget(),
-                  const SizedBox(height: 80),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: ButtonWidget(
-                      onPressed: () {},
-                      title: 'Next',
-                    ),
-                  )
-                ],
-              ),
-      ),
+          ),
+          const SizedBox(height: 40),
+          const HistoryWidget(),
+          const SizedBox(height: 80),
+          ButtonWidget(
+            onPressed: () {},
+            title: 'Next',
+          )
+        ],
+      )),
     );
   }
 }
