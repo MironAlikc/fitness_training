@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:fitness_training/data/models/program_settings_model.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
+
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/bloc_program_widget.dart';
 import 'package:fitness_training/presentation/widgets/settings_for_widget.dart';
@@ -26,6 +28,24 @@ class ProgramDialogWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
+
+    double contentPaddingHorizontal = 20;
+    double contentPaddingVertical = 20;
+    double buttonHeight = 32;
+    double buttonWidth = 102;
+
+    if (screenWidth > 1334 && mediaQuery.size.height > 700) {
+      contentPaddingHorizontal = 16;
+      contentPaddingVertical = 16;
+      buttonHeight = 38;
+      buttonWidth = 40;
+    } else if (screenWidth > 2732 && mediaQuery.size.height > 2048) {
+      contentPaddingHorizontal = 30;
+      contentPaddingVertical = 30;
+      buttonHeight = 80;
+      buttonWidth = 320;
+    }
+
     return InkWell(
       onTap: () {
         unawaited(
@@ -39,9 +59,15 @@ class ProgramDialogWidget extends StatelessWidget {
                     Radius.circular(15),
                   ),
                 ),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: contentPaddingHorizontal,
+                  vertical: contentPaddingVertical,
+                ),
                 title: Text(
                   textAlign: TextAlign.center,
                   "Settings for ${programSettings.apparat.name} (A)",
+                  style:
+                      screenWidth > 600 ? AppFonts.w800s30 : AppFonts.w800s24,
                 ),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -79,35 +105,36 @@ class ProgramDialogWidget extends StatelessWidget {
                     const Text(
                       textAlign: TextAlign.center,
                       "* Weight for current workout",
-                      style: TextStyle(color: Colors.black),
+                      style: AppFonts.w500s18,
                     ),
                   ],
                 ),
                 actions: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: contentPaddingHorizontal),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          child: const Text(
+                          child: Text(
                             "Cancel",
-                            style: TextStyle(
-                              color: Color(0xFFC8CE37),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w800,
-                            ),
+                            style: screenWidth > 600
+                                ? AppFonts.w800s24.copyWith(
+                                    color: AppColors.colorMain,
+                                  )
+                                : AppFonts.w800s18,
                           ),
                         ),
                         SizedBox(
-                          height: screenWidth > 600 ? 100 : 30,
-                          width: screenWidth > 600 ? 150 : 80,
+                          height: buttonHeight,
+                          width: buttonWidth,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFC8CE37),
+                              backgroundColor: AppColors.colorMain,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(39),
                               ),
                             ),
                             onPressed: () => onPressed.call(
@@ -143,10 +170,12 @@ class ProgramDialogWidget extends StatelessWidget {
                                 weight: 0,
                               ),
                             ),
-                            child: const Text(
-                              "Ok",
+                            child: Text(
+                              "OK",
                               textAlign: TextAlign.center,
-                              style: AppFonts.w700s18,
+                              style: screenWidth > 600
+                                  ? AppFonts.w700s24
+                                  : AppFonts.w700s18,
                             ),
                           ),
                         ),
@@ -166,8 +195,8 @@ class ProgramDialogWidget extends StatelessWidget {
             )
           : SvgPicture.asset(
               AppSvgs.settingsProgram,
-              height: screenWidth > 600 ? 350 : null,
-              width: screenWidth > 600 ? 350 : null,
+              height: screenWidth > 500 ? 350 : 180,
+              width: screenWidth > 500 ? 350 : 180,
             ),
     );
   }

@@ -1,3 +1,4 @@
+import "package:fitness_training/presentation/themes/app_colors.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/svg.dart";
 
@@ -15,19 +16,34 @@ class CustomTimerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
+
+    double containerWidth = 160;
+    double containerHeight = 150;
+    double svgHeight = 70;
+    double svgWidth = 60;
+    double fontSize = 24;
+
+    if (screenWidth > 600) {
+      containerWidth = 207;
+      containerHeight = 194;
+      svgHeight = 90;
+      svgWidth = 80;
+      fontSize = 30;
+    }
+
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: (screenWidth > 600) ? 190 : 160,
-        height: (screenWidth > 600) ? 200 : 150,
+        width: containerWidth,
+        height: containerHeight,
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
           shadows: const [
             BoxShadow(
-              color: Color(0x26000000),
+              color: AppColors.shadows,
               blurRadius: 7.32,
               offset: Offset(0, 7.32),
             ),
@@ -39,16 +55,16 @@ class CustomTimerWidget extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 image,
+                height: svgHeight,
+                width: svgWidth,
               ),
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0xFFC8CE37),
-                  fontSize: 24,
-                  fontFamily: "Inter",
+                style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  height: 0,
+                  fontSize: fontSize,
+                  color: const Color(0xFFC8CE37),
                 ),
               ),
             ],
