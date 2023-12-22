@@ -16,13 +16,12 @@ class ProgramDialogWidget extends StatelessWidget {
     required this.onPressed,
     required this.programSettings,
   });
-
-  final ValueChanged<ProgramSettingsModel> onPressed;
-  final TextEditingController controllerSeats = TextEditingController();
-  final TextEditingController controllerPin = TextEditingController();
-  final TextEditingController controllerBack = TextEditingController();
-  final TextEditingController controllerHandle = TextEditingController();
   final ProgramSettingsModel programSettings;
+  final ValueChanged<ProgramSettingsModel> onPressed;
+  final controllerSeats = TextEditingController();
+  final controllerPin = TextEditingController();
+  final controllerBack = TextEditingController();
+  final controllerHandle = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +166,7 @@ class ProgramDialogWidget extends StatelessWidget {
                                     type: ProportiesType.pin,
                                   ),
                                 ],
-                                weight: 0,
+                                weight: 10,
                               ),
                             ),
                             child: Text(
