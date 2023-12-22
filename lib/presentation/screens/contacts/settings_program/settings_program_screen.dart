@@ -1,4 +1,5 @@
 import "package:auto_route/auto_route.dart";
+import "package:fitness_training/data/models/history_training_model.dart";
 import "package:fitness_training/data/models/program_settings_model.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
 import "package:fitness_training/presentation/themes/app_fonts.dart";
@@ -31,6 +32,12 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
     super.initState();
     _programSettings = widget.programSettings;
   }
+
+  final a = HistoryTrainihgModel(
+    weight: 70,
+    time: Duration(hours: 1),
+    date: DateTime(2023, 1, 22),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -167,6 +174,14 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
           ),
           const SizedBox(height: 40),
           const HistoryWidget(),
+          Text(
+            '${a.time.inMinutes}',
+            style: AppFonts.w500s18,
+          ),
+          Text(
+            '${a.date.day}/${a.date.month}/${a.date.year}',
+            style: AppFonts.w800s18,
+          ),
           const SizedBox(height: 80),
           ButtonWidget(
             onPressed: () {},
