@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/data/models/client_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/grid_contacts_widget.dart';
@@ -35,11 +36,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
-                      itemCount: 20,
+                      itemCount: ClientData.client.length,
                       itemBuilder: (context, index) => GridContactsWidget(
+                        model: ClientData.client[index],
                         onTap: () {
                           AutoRouter.of(context).push(
-                            const ProgramRoute(),
+                            ProgramRoute(
+                              model: ClientData.client[index],
+                            ),
                           );
                         },
                       ),
@@ -55,11 +59,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
-                      itemCount: 10,
+                      itemCount: ClientData.client.length,
                       itemBuilder: (context, index) => ListContactsWidget(
+                        model: ClientData.client[index],
                         onTap: () {
                           AutoRouter.of(context).push(
-                            const ProgramRoute(),
+                            ProgramRoute(
+                              model: ClientData.client[index],
+                            ),
                           );
                         },
                       ),

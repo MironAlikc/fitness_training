@@ -1,9 +1,14 @@
+import 'package:fitness_training/data/models/client_model.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
-import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class GridContactsWidget extends StatelessWidget {
-  const GridContactsWidget({required this.onTap, super.key});
+  const GridContactsWidget({
+    required this.onTap,
+    required this.model,
+    super.key,
+  });
+  final ClientModel model;
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -12,18 +17,18 @@ class GridContactsWidget extends StatelessWidget {
         children: [
           InkWell(
             onTap: onTap,
-            child: const Column(
+            child: Column(
               children: [
                 CircleAvatar(
                   radius: 75,
                   backgroundColor: Colors.white,
                   backgroundImage: AssetImage(
-                    AppPngs.userImage,
+                    model.photo ?? '',
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
-                  'Aleksander',
+                  model.name,
                   style: AppFonts.w500s24,
                 )
               ],

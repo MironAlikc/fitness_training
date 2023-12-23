@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/data/models/client_model.dart';
 import 'package:fitness_training/data/models/program_settings_model.dart';
 import 'package:fitness_training/data/models/training_apparatus_model.dart';
 import 'package:fitness_training/presentation/screens/calendar/calendar_screen.dart';

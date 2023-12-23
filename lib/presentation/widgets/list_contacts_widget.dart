@@ -1,8 +1,15 @@
-import 'package:fitness_training/resources/resources.dart';
+import 'package:fitness_training/data/models/client_model.dart';
+import 'package:fitness_training/presentation/themes/app_colors.dart';
+import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class ListContactsWidget extends StatelessWidget {
-  const ListContactsWidget({required this.onTap, super.key});
+  const ListContactsWidget({
+    required this.onTap,
+    super.key,
+    required this.model,
+  });
+  final ClientModel model;
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -20,66 +27,50 @@ class ListContactsWidget extends StatelessWidget {
               height: 108,
               padding: const EdgeInsets.all(20),
               decoration: ShapeDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
                 shadows: const [
                   BoxShadow(
-                    color: Color(0x26000000),
+                    color: AppColors.shadows,
                     blurRadius: 4,
                     offset: Offset(0, 4),
                   ),
                 ],
               ),
-              child: const Row(
+              child: Row(
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundColor: Colors.white,
+                    backgroundColor: AppColors.white,
                     backgroundImage: AssetImage(
-                      AppPngs.userImage,
+                      model.photo ?? '',
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Aleksander",
-                        style: TextStyle(
-                          color: Color(0xFF1E1E1E),
-                          fontSize: 18,
-                          fontFamily: "Inter",
-                          fontWeight: FontWeight.w500,
-                          height: 0,
+                        model.name,
+                        style: AppFonts.w500s18.copyWith(
+                          color: AppColors.black,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
                           Text(
-                            "Weight 200tb ",
+                            "Weight ${model.weight} tb ",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFFA3A3A3),
-                              fontSize: 16,
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w400,
-                              height: 0,
-                            ),
+                            style: AppFonts.w400s16,
                           ),
-                          SizedBox(width: 18),
+                          const SizedBox(width: 18),
                           Text(
-                            "Height 6,3",
+                            "Height ${model.height}",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFFA3A3A3),
-                              fontSize: 16,
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w400,
-                              height: 0,
-                            ),
+                            style: AppFonts.w400s16,
                           ),
                         ],
                       ),

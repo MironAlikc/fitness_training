@@ -1,3 +1,4 @@
+import 'package:fitness_training/data/models/client_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/text_parameters_user_widget.dart';
@@ -6,7 +7,10 @@ import 'package:flutter/material.dart';
 class UserCardWidget extends StatelessWidget {
   const UserCardWidget({
     super.key,
+    required this.model,
   });
+
+  final ClientModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -37,38 +41,38 @@ class UserCardWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Andrew Brown",
+              model.name,
               textAlign: TextAlign.center,
               style: screenWidth > 600 ? AppFonts.w800s40 : AppFonts.w800s30,
             ),
-            const TextParametersUserWidget(
+            TextParametersUserWidget(
               textOne: 'Phone number ',
-              textTwo: '+123 456 789 9192',
+              textTwo: model.phoneNumber,
             ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: screenWidth > 600 ? 180 : 5,
               ),
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextParametersUserWidget(
+                  const TextParametersUserWidget(
                     textOne: 'Age ',
                     textTwo: '32 y ',
                   ),
                   TextParametersUserWidget(
                     textOne: 'Weight ',
-                    textTwo: '200tb',
+                    textTwo: model.weight.toString(),
                   ),
                   TextParametersUserWidget(
                     textOne: 'Height ',
-                    textTwo: '6,3',
+                    textTwo: model.height.toString(),
                   ),
                 ],
               ),
             ),
             Text(
-              "Some notes about Andrew",
+              model.notes ?? '',
               textAlign: TextAlign.center,
               style: screenWidth > 600 ? AppFonts.w400s24 : AppFonts.w400s18,
             ),
