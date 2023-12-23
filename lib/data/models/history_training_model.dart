@@ -9,4 +9,3 @@ class HistoryTrainihgModel {
     required this.date,
   });
 }
-

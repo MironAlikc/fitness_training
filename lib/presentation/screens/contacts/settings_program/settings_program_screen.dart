@@ -9,6 +9,7 @@ import "package:fitness_training/presentation/widgets/history_widget.dart";
 import "package:fitness_training/presentation/widgets/program_dialog_widget.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
+import "package:intl/intl.dart";
 
 @RoutePage()
 class SettingsProgramScreen extends StatefulWidget {
@@ -34,9 +35,9 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
   }
 
   final a = HistoryTrainihgModel(
-    weight: 70,
-    time: Duration(hours: 1),
-    date: DateTime(2023, 1, 22),
+    weight: 20,
+    time: const Duration(hours: 2),
+    date: DateTime(2023, 11, 22),
   );
 
   @override
@@ -176,12 +177,16 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
           const HistoryWidget(),
           Text(
             '${a.time.inMinutes}',
-            style: AppFonts.w500s18,
+            style: AppFonts.w600s55,
           ),
           Text(
-            '${a.date.day}/${a.date.month}/${a.date.year}',
-            style: AppFonts.w800s18,
+            DateFormat.yMd().format(a.date),
+            style: AppFonts.w600s55,
           ),
+          // Text(
+          //   '${a.date.day}/${a.date.month}/${a.date.year}',
+          //   style: AppFonts.w600s55,
+          // ),
           const SizedBox(height: 80),
           ButtonWidget(
             onPressed: () {},
