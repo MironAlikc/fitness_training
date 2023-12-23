@@ -1,17 +1,24 @@
 import "dart:async";
-
 import "package:auto_route/auto_route.dart";
 import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
 
 class StopwatchTimerScreens extends StatefulWidget {
-  const StopwatchTimerScreens({super.key});
-
+  const StopwatchTimerScreens({
+    super.key,
+    required this.onSave,
+  });
+  final Function(String) onSave;
   @override
   State<StopwatchTimerScreens> createState() => _StopwatchTimerScreensState();
 }
 
 class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
+  void onSaveButtonPressed() {
+    final String timerResult = "$digitHours:$digitMinutes:$digitSeconds";
+    widget.onSave(timerResult);
+  }
+
   int seconds = 0;
   int minutes = 0;
   int hours = 0;
@@ -189,6 +196,19 @@ class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
               },
             ),
           ),
+          ElevatedButton(
+            onPressed: onSaveButtonPressed,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red, // Change button color to red
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(34),
+            ),
+            child: const Text(
+              "Save",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          const SizedBox(height: 50),
         ],
       ),
     );
