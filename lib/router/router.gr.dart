@@ -52,9 +52,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProgramRoute.name: (routeData) {
+      final args = routeData.argsAs<ProgramRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProgramScreen(),
+        child: ProgramScreen(
+          key: args.key,
+          model: args.model,
+        ),
       );
     },
     SelectTrainingRoute.name: (routeData) {
@@ -184,16 +188,40 @@ class LoginRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProgramScreen]
-class ProgramRoute extends PageRouteInfo<void> {
-  const ProgramRoute({List<PageRouteInfo>? children})
-      : super(
+class ProgramRoute extends PageRouteInfo<ProgramRouteArgs> {
+  ProgramRoute({
+    Key? key,
+    required ClientModel model,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProgramRoute.name,
+          args: ProgramRouteArgs(
+            key: key,
+            model: model,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ProgramRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProgramRouteArgs> page =
+      PageInfo<ProgramRouteArgs>(name);
+}
+
+class ProgramRouteArgs {
+  const ProgramRouteArgs({
+    this.key,
+    required this.model,
+  });
+
+  final Key? key;
+
+  final ClientModel model;
+
+  @override
+  String toString() {
+    return 'ProgramRouteArgs{key: $key, model: $model}';
+  }
 }
 
 /// generated route for
