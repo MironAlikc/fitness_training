@@ -44,6 +44,18 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
     time: const Duration(hours: 2),
     date: DateTime(2023, 11, 22),
   );
+  double timer = 0;
+
+  void onsive(double tim) {
+    setState(() {
+      timer = tim;
+      historyModel = HistoryTrainihgModel(
+        weight: 20,
+        time: Duration(seconds: timer.toInt()),
+        date: DateTime.now(),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +176,8 @@ class _SettingsProgramScreenState extends State<SettingsProgramScreen> {
                                   MaterialPageRoute(
                                     builder: (context) => StopwatchTimerScreens(
                                       onSave: (timerResult) {
-                                        print("Timer result: $timerResult");
+                                        //  print("Timer result: $timerResult");
+                                        onsive(timerResult);
                                       },
                                     ),
                                   ),

@@ -14,6 +14,7 @@ class HistoryWidget extends StatelessWidget {
   // );
   @override
   Widget build(BuildContext context) {
+    print(historyModel.time);
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     return Column(
@@ -68,7 +69,8 @@ class HistoryWidget extends StatelessWidget {
                       screenWidth > 600 ? AppFonts.w500s24 : AppFonts.w500s18,
                 ),
                 Text(
-                  historyModel.time.inMinutes.toString(),
+                  //historyModel.time.inMinutes.toString(),
+                  historyModel.time.inMicroseconds.toString(),
                   style:
                       screenWidth > 600 ? AppFonts.w500s24 : AppFonts.w500s18,
                 ),

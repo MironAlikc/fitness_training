@@ -8,15 +8,22 @@ class StopwatchTimerScreens extends StatefulWidget {
     super.key,
     required this.onSave,
   });
-  final Function(String) onSave;
+  final Function(double) onSave;
   @override
   State<StopwatchTimerScreens> createState() => _StopwatchTimerScreensState();
 }
 
 class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
   void onSaveButtonPressed() {
-    final String timerResult = "$digitHours:$digitMinutes:$digitSeconds";
-    widget.onSave(timerResult);
+    // final String timerResult = "$digitHours:$digitMinutes:$digitSeconds";
+    // widget.onSave(timerResult);
+    setState(() {
+      widget.onSave(Duration(
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
+      ).inSeconds.toDouble());
+    });
   }
 
   int seconds = 0;
