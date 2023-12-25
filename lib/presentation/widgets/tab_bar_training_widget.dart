@@ -1,5 +1,6 @@
 import "package:fitness_training/presentation/themes/app_colors.dart";
 import "package:fitness_training/presentation/themes/app_fonts.dart";
+import "package:fitness_training/presentation/widgets/training_program_widget.dart";
 import "package:flutter/material.dart";
 
 class TabBarTrainingWidget extends StatefulWidget {
@@ -11,10 +12,7 @@ class TabBarTrainingWidget extends StatefulWidget {
 
 class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
   List<Widget> tabItems = [
-    const Text(
-      "Program A",
-      style: AppFonts.w500s24,
-    ),
+    const TrainingProgramWidget(),
     const Text(
       "Program B",
       style: AppFonts.w500s24,
@@ -73,7 +71,6 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
                 ],
                 isScrollable: true,
               ),
-              const SizedBox(height: 16),
             ],
           ),
         ),
