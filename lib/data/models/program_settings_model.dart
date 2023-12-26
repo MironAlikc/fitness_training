@@ -7,8 +7,8 @@ class ProgramSettingsModel {
 
   ProgramSettingsModel({
     required this.apparat,
-    required this.proporties,
-    required this.weight,
+    this.proporties = const <ProgramSettingsProporties>[],
+    this.weight = 0,
   });
 }
 
