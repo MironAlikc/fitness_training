@@ -1,12 +1,15 @@
-import 'package:fitness_training/resources/resources.dart';
+import 'package:fitness_training/data/models/appointment_model.dart';
 import 'package:flutter/material.dart';
 
 class ListCalendarWidget extends StatelessWidget {
   const ListCalendarWidget({
     required this.onTap,
     super.key,
+    required this.appointment,
   });
   final Function() onTap;
+  final AppointmentModel appointment;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,23 +38,23 @@ class ListCalendarWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Row(
+              child: Row(
                 children: [
                   CircleAvatar(
                     radius: 37,
                     backgroundColor: Colors.white,
                     backgroundImage: AssetImage(
-                      AppPngs.user,
+                      appointment.client.photo ?? '',
                     ),
                   ),
-                  SizedBox(width: 18),
+                  const SizedBox(width: 18),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "9.30 AM",
+                        '${appointment.date.hour}:${appointment.date.minute}',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xFFA3A3A3),
                           fontSize: 16,
                           fontFamily: "Inter",
@@ -59,10 +62,10 @@ class ListCalendarWidget extends StatelessWidget {
                           height: 0,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
-                        "Anna Brown",
-                        style: TextStyle(
+                        appointment.client.name,
+                        style: const TextStyle(
                           color: Color(0xFF1E1E1E),
                           fontSize: 18,
                           fontFamily: "Inter",
@@ -70,7 +73,7 @@ class ListCalendarWidget extends StatelessWidget {
                           height: 0,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ],

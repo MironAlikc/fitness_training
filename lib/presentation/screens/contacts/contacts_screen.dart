@@ -36,13 +36,13 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
-                      itemCount: ClientData.client.length,
+                      itemCount: clients.length,
                       itemBuilder: (context, index) => GridContactsWidget(
-                        model: ClientData.client[index],
+                        model: clients[index],
                         onTap: () {
                           AutoRouter.of(context).push(
                             ProgramRoute(
-                              model: ClientData.client[index],
+                              model: clients[index],
                             ),
                           );
                         },
@@ -59,13 +59,13 @@ class _ContactsScreenState extends State<ContactsScreen> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
-                      itemCount: ClientData.client.length,
+                      itemCount: clients.length,
                       itemBuilder: (context, index) => ListContactsWidget(
-                        model: ClientData.client[index],
+                        model: clients[index],
                         onTap: () {
                           AutoRouter.of(context).push(
                             ProgramRoute(
-                              model: ClientData.client[index],
+                              model: clients[index],
                             ),
                           );
                         },

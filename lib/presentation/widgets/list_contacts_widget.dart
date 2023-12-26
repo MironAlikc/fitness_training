@@ -48,7 +48,7 @@ class ListContactsWidget extends StatelessWidget {
                       model.photo ?? '',
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 5),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -58,7 +58,7 @@ class ListContactsWidget extends StatelessWidget {
                           color: AppColors.black,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Row(
                         children: [
                           Text(
@@ -66,7 +66,7 @@ class ListContactsWidget extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: AppFonts.w400s16,
                           ),
-                          const SizedBox(width: 18),
+                          const SizedBox(width: 5),
                           Text(
                             "Height ${model.height}",
                             textAlign: TextAlign.center,

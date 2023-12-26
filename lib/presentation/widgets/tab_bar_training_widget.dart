@@ -1,23 +1,20 @@
+import "package:auto_route/auto_route.dart";
+import "package:fitness_training/data/models/client_model.dart";
 import "package:fitness_training/presentation/themes/app_colors.dart";
 import "package:fitness_training/presentation/themes/app_fonts.dart";
 import "package:fitness_training/presentation/widgets/training_program_widget.dart";
+import "package:fitness_training/router/router.dart";
 import "package:flutter/material.dart";
 
 class TabBarTrainingWidget extends StatefulWidget {
-  const TabBarTrainingWidget({super.key});
+  const TabBarTrainingWidget({super.key, required this.model});
 
+  final ClientModel model;
   @override
   State<TabBarTrainingWidget> createState() => _TabBarTrainingWidgetState();
 }
 
 class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
-  List<Widget> tabItems = [
-    const TrainingProgramWidget(),
-    const Text(
-      "Program B",
-      style: AppFonts.w500s24,
-    ),
-  ];
   int currentTabIndex = 0;
 
   @override
@@ -74,7 +71,18 @@ class _TabBarTrainingWidgetState extends State<TabBarTrainingWidget> {
             ],
           ),
         ),
-        SingleChildScrollView(child: tabItems[currentTabIndex]),
+        SingleChildScrollView(
+          child: TrainingProgramWidget(
+            programs: currentTabIndex == 0
+                ? widget.model.currentPrograms
+                : widget.model.archievePrograms,
+            onTap: () {
+              AutoRouter.of(context).push(
+                const CreateProgramRoute(),
+              );
+            },
+          ),
+        ),
       ],
     );
   }

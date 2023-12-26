@@ -1,23 +1,27 @@
+import 'package:fitness_training/data/models/program_model.dart';
 import 'package:flutter/material.dart';
 
 class TrainingProgramWidget extends StatelessWidget {
   const TrainingProgramWidget({
     super.key,
+    required this.programs,
+    required this.onTap,
   });
-
+  final List<ProgramModel> programs;
+  final Function() onTap;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       shrinkWrap: true,
-      itemCount: 3,
+      itemCount: programs.length,
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 10,
           horizontal: 20,
         ),
         child: InkWell(
-          onTap: () {},
+          onTap: onTap,
           child: Container(
             width: double.infinity,
             height: 66,
@@ -36,10 +40,10 @@ class TrainingProgramWidget extends StatelessWidget {
                 )
               ],
             ),
-            child: const Text(
+            child: Text(
               textAlign: TextAlign.center,
-              'Program A',
-              style: TextStyle(
+              'Program ${programs[index].name}',
+              style: const TextStyle(
                 color: Color(0xFF1E1E1E),
                 fontSize: 24,
                 fontFamily: 'Inter',

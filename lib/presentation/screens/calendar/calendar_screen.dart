@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/data/models/appointment_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/grid_calendar_widget.dart';
@@ -25,6 +26,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     final screenWidth = mediaQuery.size.width;
     final double width = screenWidth > 600 ? 50 : 34;
     final double height = screenWidth > 600 ? 50 : 34;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -55,9 +57,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
-                      itemCount: 10,
+                      itemCount: appointments.length,
                       itemBuilder: (context, index) => ListCalendarWidget(
                         onTap: () {},
+                        appointment: appointments[index],
                       ),
                     ),
               TextField(

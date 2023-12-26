@@ -59,7 +59,9 @@ class ProgramScreen extends StatelessWidget {
                   title: "Create New Program",
                 ),
               ),
-              const TabBarTrainingWidget(),
+              TabBarTrainingWidget(
+                model: model,
+              ),
             ],
           ),
         ),
