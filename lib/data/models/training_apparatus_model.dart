@@ -1,7 +1,10 @@
+
 class TrainingApparatusModel {
   final String name;
 
-  TrainingApparatusModel({required this.name});
+  TrainingApparatusModel({
+    required this.name,
+  });
 }
 
 List<TrainingApparatusModel> apparatusModels = apparatusNames
