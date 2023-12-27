@@ -41,7 +41,10 @@ List<ClientModel> clients = [
         settings: [
           ProgramSettingsModel(
             apparat: TrainingApparatusModel(name: 'A'),
-          )
+          ),
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: 'B'),
+          ),
         ],
       ),
     ],
@@ -55,10 +58,10 @@ List<ClientModel> clients = [
     photo: AppPngs.anna,
     currentPrograms: [
       ProgramModel(
-        name: 'A',
+        name: 'B',
         settings: [
           ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'A'),
+            apparat: TrainingApparatusModel(name: 'B'),
           )
         ],
       ),
