@@ -41,9 +41,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       shrinkWrap: true,
-                      itemCount: 20,
+                      itemCount: appointments.length,
                       itemBuilder: (context, index) => GridCalendarWidget(
                         onTap: () {},
+                        appointment: appointments[index],
                       ),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(

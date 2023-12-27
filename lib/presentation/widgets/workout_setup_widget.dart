@@ -5,9 +5,9 @@ import 'package:fitness_training/presentation/widgets/shared_prefs_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
-class BlocProgramWidget extends StatelessWidget {
+class WorkoutSetupWidget extends StatelessWidget {
   final ProgramSettingsModel programSettings;
-  const BlocProgramWidget({
+  const WorkoutSetupWidget({
     super.key,
     required this.programSettings,
   });

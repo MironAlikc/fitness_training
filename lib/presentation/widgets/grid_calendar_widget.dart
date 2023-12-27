@@ -1,13 +1,17 @@
+import 'dart:core';
+
+import 'package:fitness_training/data/models/appointment_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
-import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class GridCalendarWidget extends StatelessWidget {
   const GridCalendarWidget({
     required this.onTap,
     super.key,
+    required this.appointment,
   });
+  final AppointmentModel appointment;
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -16,26 +20,26 @@ class GridCalendarWidget extends StatelessWidget {
         children: [
           InkWell(
             onTap: onTap,
-            child: const Column(
+            child: Column(
               children: [
                 CircleAvatar(
                   radius: 75,
                   backgroundColor: AppColors.white,
                   backgroundImage: AssetImage(
-                    AppPngs.user,
+                    appointment.client.photo ?? "",
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
-                  "Aleksander",
+                  appointment.client.name,
                   style: AppFonts.w500s24,
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text(
-                  '9.30 AM',
+                  '${appointment.date.hour}:${appointment.date.minute}',
                   style: AppFonts.w700s30,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),

@@ -4,7 +4,7 @@ import 'package:fitness_training/data/models/program_settings_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
-import 'package:fitness_training/presentation/widgets/bloc_program_widget.dart';
+import 'package:fitness_training/presentation/widgets/workout_setup_widget.dart';
 import 'package:fitness_training/presentation/widgets/settings_for_widget.dart';
 import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +95,7 @@ class ProgramDialogWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 20),
                         SettingsForWidget(
-                          text: "Weight",
+                          text: "Handle",
                           controller: controllerHandle,
                         ),
                       ],
@@ -189,7 +189,7 @@ class ProgramDialogWidget extends StatelessWidget {
         );
       },
       child: (programSettings.proporties.isNotEmpty)
-          ? BlocProgramWidget(
+          ? WorkoutSetupWidget(
               programSettings: programSettings,
             )
           : SvgPicture.asset(
