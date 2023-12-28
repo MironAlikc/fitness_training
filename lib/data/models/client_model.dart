@@ -44,10 +44,26 @@ List<ClientModel> clients = [
           ),
         ],
       ),
+      ProgramModel(
+        name: 'B',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'C',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
     ],
     archievePrograms: [
       ProgramModel(
-        name: 'B',
+        name: 'A',
         settings: [
           ProgramSettingsModel(
             apparat: TrainingApparatusModel(name: ''),
@@ -65,11 +81,27 @@ List<ClientModel> clients = [
     photo: AppPngs.anna,
     currentPrograms: [
       ProgramModel(
+        name: 'A',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
         name: 'B',
         settings: [
           ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'B'),
-          )
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'C',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
         ],
       ),
     ],
@@ -86,8 +118,24 @@ List<ClientModel> clients = [
         name: 'A',
         settings: [
           ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'A'),
-          )
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'B',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'C',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
         ],
       ),
     ],
@@ -104,8 +152,24 @@ List<ClientModel> clients = [
         name: 'A',
         settings: [
           ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'A'),
-          )
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'B',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'C',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
         ],
       ),
     ],
@@ -123,7 +187,23 @@ List<ClientModel> clients = [
         settings: [
           ProgramSettingsModel(
             apparat: TrainingApparatusModel(name: ''),
-          )
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'B',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+      ProgramModel(
+        name: 'C',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
         ],
       ),
     ],

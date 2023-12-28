@@ -91,9 +91,12 @@ class SelectTrainingScreen extends StatelessWidget {
               }).toList(),
             ),
             const Spacer(),
-            ButtonWidget(
-              onPressed: () {},
-              title: "Save",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ButtonWidget(
+                onPressed: () {},
+                title: "Save",
+              ),
             ),
             const SizedBox(height: 20),
           ],

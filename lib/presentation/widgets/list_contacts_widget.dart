@@ -62,7 +62,7 @@ class ListContactsWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "Weight ${model.weight} tb ",
+                            "Weight ${model.weight}.tb",
                             textAlign: TextAlign.center,
                             style: AppFonts.w400s16,
                           ),

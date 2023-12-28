@@ -23,7 +23,7 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
     final screenWidth = mediaQuery.size.width;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: screenWidth > 600 ? 100 : 80, 
+        leadingWidth: screenWidth > 600 ? 100 : 80,
         backgroundColor: AppColors.white,
         elevation: 0,
         leading: IconButton(
@@ -89,18 +89,22 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
               ),
               //  const Spacer(),
               const SizedBox(height: 30),
-              ButtonWidget(
-                onPressed: _selectedApparatus.isNotEmpty
-                    ? () {
-                        AutoRouter.of(context).push(
-                          SelectTrainingRoute(
-                            apparatus: _selectedApparatus,
-                          ),
-                        );
-                      }
-                    : null,
-                title: "Next",
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ButtonWidget(
+                  onPressed: _selectedApparatus.isNotEmpty
+                      ? () {
+                          AutoRouter.of(context).push(
+                            SelectTrainingRoute(
+                              apparatus: _selectedApparatus,
+                            ),
+                          );
+                        }
+                      : null,
+                  title: "Next",
+                ),
               ),
+
               const SizedBox(height: 20),
             ],
           ),
