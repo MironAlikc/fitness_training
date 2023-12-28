@@ -10,9 +10,7 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({
-    super.key,
-  });
+  const CalendarScreen({super.key});
 
   @override
   State<CalendarScreen> createState() => _CalendarScreenState();

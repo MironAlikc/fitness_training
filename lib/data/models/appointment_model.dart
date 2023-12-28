@@ -1,7 +1,7 @@
 import 'package:fitness_training/data/models/client_model.dart';
 import 'package:fitness_training/resources/resources.dart';
 
-class AppointmentModel {
+class AppointmentModel { 
   final Duration duration;
   final DateTime date;
   final ClientModel client;
@@ -21,7 +21,7 @@ List<AppointmentModel> appointments = [
       weight: 70,
       height: 200,
       phoneNumber: '+123 456 789 9192',
-      photo: AppPngs.userImage,
+      photo: AppPngs.userImage, 
     ),
     date: DateTime.now(),
   ),
