@@ -15,6 +15,16 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    ArchieveProgramRoute.name: (routeData) {
+      final args = routeData.argsAs<ArchieveProgramRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ArchieveProgramScreen(
+          key: args.key,
+          apparatus: args.apparatus,
+        ),
+      );
+    },
     CalendarRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -100,6 +110,44 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [ArchieveProgramScreen]
+class ArchieveProgramRoute extends PageRouteInfo<ArchieveProgramRouteArgs> {
+  ArchieveProgramRoute({
+    Key? key,
+    required List<TrainingApparatusModel> apparatus,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ArchieveProgramRoute.name,
+          args: ArchieveProgramRouteArgs(
+            key: key,
+            apparatus: apparatus,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ArchieveProgramRoute';
+
+  static const PageInfo<ArchieveProgramRouteArgs> page =
+      PageInfo<ArchieveProgramRouteArgs>(name);
+}
+
+class ArchieveProgramRouteArgs {
+  const ArchieveProgramRouteArgs({
+    this.key,
+    required this.apparatus,
+  });
+
+  final Key? key;
+
+  final List<TrainingApparatusModel> apparatus;
+
+  @override
+  String toString() {
+    return 'ArchieveProgramRouteArgs{key: $key, apparatus: $apparatus}';
+  }
 }
 
 /// generated route for

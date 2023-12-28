@@ -7,7 +7,10 @@ import "package:fitness_training/router/router.dart";
 import "package:flutter/material.dart";
 
 class TabBarTrainingWidget extends StatefulWidget {
-  const TabBarTrainingWidget({super.key, required this.model});
+  const TabBarTrainingWidget({
+    super.key,
+    required this.model,
+  });
 
   final ClientModel model;
   @override

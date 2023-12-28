@@ -45,6 +45,16 @@ List<ClientModel> clients = [
         ],
       ),
     ],
+    archievePrograms: [
+      ProgramModel(
+        name: 'B',
+        settings: [
+          ProgramSettingsModel(
+            apparat: TrainingApparatusModel(name: ''),
+          ),
+        ],
+      ),
+    ],
   ),
   ClientModel(
     birthday: DateTime(2023, 11, 22),
@@ -102,14 +112,14 @@ List<ClientModel> clients = [
   ),
   ClientModel(
     birthday: DateTime(2023, 11, 22),
-    name: 'Andrew Trainer',
+    name: 'Andrew Trainer',
     weight: 70,
     height: 200,
     phoneNumber: '+123 456 789 9192',
     photo: AppPngs.userImage,
     currentPrograms: [
       ProgramModel(
-        name: 'Asss',
+        name: 'A',
         settings: [
           ProgramSettingsModel(
             apparat: TrainingApparatusModel(name: ''),

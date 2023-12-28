@@ -35,7 +35,13 @@ class SelectTrainingScreen extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              AutoRouter.of(context).push(
+                ArchieveProgramRoute(
+                  apparatus: apparatus,
+                ),
+              );
+            },
             child: Text(
               "Archieve",
               style: AppFonts.w700s18.copyWith(
