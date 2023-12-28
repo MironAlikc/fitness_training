@@ -4,19 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class HistoryWidget extends StatelessWidget {
-  HistoryWidget({super.key, required this.historyModel});
+  const HistoryWidget({super.key});
 
-  final HistoryTrainihgModel historyModel;
-  // final historyModel = HistoryTrainihgModel(
-  //   weight: 20,
-  //   time: const Duration(hours: 1),
-  //   date: DateTime.now(),
-  // );
   @override
   Widget build(BuildContext context) {
-    print(historyModel.time);
+    final historyModel = HistoryTrainihgModel(
+      weight: 20,
+      time: const Duration(hours: 0),
+      date: DateTime.now(),
+    );
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
+    String formatDuration(Duration duration) {
+      return '${duration.inHours}:${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+    }
+
     return Column(
       children: [
         Padding(
@@ -69,8 +71,7 @@ class HistoryWidget extends StatelessWidget {
                       screenWidth > 600 ? AppFonts.w500s24 : AppFonts.w500s18,
                 ),
                 Text(
-                  //historyModel.time.inMinutes.toString(),
-                  historyModel.time.inMicroseconds.toString(),
+                  formatDuration(historyModel.time),
                   style:
                       screenWidth > 600 ? AppFonts.w500s24 : AppFonts.w500s18,
                 ),

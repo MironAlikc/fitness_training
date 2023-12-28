@@ -128,6 +128,18 @@ class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
               ),
             ),
           ),
+          ElevatedButton(
+            onPressed: onSaveButtonPressed,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(24),
+            ),
+            child: const Text(
+              "Save",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -174,12 +186,12 @@ class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
             ],
           ),
           SizedBox(
-            height: 400,
+            height: 300,
             child: ListView.builder(
               itemCount: laps.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -203,19 +215,7 @@ class _StopwatchTimerScreensState extends State<StopwatchTimerScreens> {
               },
             ),
           ),
-          ElevatedButton(
-            onPressed: onSaveButtonPressed,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red, // Change button color to red
-              shape: const CircleBorder(),
-              padding: const EdgeInsets.all(34),
-            ),
-            child: const Text(
-              "Save",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          const SizedBox(height: 50),
+          //  const SizedBox(height: 50),
         ],
       ),
     );
