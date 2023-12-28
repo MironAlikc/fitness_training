@@ -33,17 +33,14 @@ List<ClientModel> clients = [
     name: 'Aleksandr',
     weight: 70,
     height: 160,
-    phoneNumber: '+ 380 632625621',
+    phoneNumber: '+380632625621',
     photo: AppPngs.aleksandr,
     currentPrograms: [
       ProgramModel(
         name: 'A',
         settings: [
           ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'A'),
-          ),
-          ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'B'),
+            apparat: TrainingApparatusModel(name: ''),
           ),
         ],
       ),
@@ -112,10 +109,10 @@ List<ClientModel> clients = [
     photo: AppPngs.userImage,
     currentPrograms: [
       ProgramModel(
-        name: 'A',
+        name: 'Asss',
         settings: [
           ProgramSettingsModel(
-            apparat: TrainingApparatusModel(name: 'A'),
+            apparat: TrainingApparatusModel(name: ''),
           )
         ],
       ),
