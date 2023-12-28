@@ -23,7 +23,7 @@ class _CreateProgramScreenState extends State<CreateProgramScreen> {
     final screenWidth = mediaQuery.size.width;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: screenWidth > 600 ? 100 : 80,
+        leadingWidth: screenWidth > 600 ? 100 : 80, 
         backgroundColor: AppColors.white,
         elevation: 0,
         leading: IconButton(
