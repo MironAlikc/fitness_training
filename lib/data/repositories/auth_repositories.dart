@@ -7,7 +7,7 @@ class AuthRepositories {
   AuthRepositories({required this.dio});
   final Dio dio;
 
-  Future authToken({
+  Future<TokenModel> login({
     required String username,
     required String password,
   }) async {
@@ -20,11 +20,11 @@ class AuthRepositories {
         },
       );
 
-      final TokenModel tokenModel = TokenModel.fromJson(response.data);
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final tokenModel = TokenModel.fromJson(response.data);
+      final prefs = await SharedPreferences.getInstance();
       await prefs.setString(
           AppConsts.accessToken, tokenModel.accessToken ?? "");
-      return response.data;
+      return tokenModel;
     } catch (e) {
       rethrow;
     }

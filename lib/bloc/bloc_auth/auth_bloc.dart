@@ -15,19 +15,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<GetTokenEvent>((event, emit) async {
       try {
         emit(AuthLoading());
-        final result = await repo.authToken(
+        final result = await repo.login(
           username: event.login,
           password: event.password,
         );
 
-        final TokenModel data = TokenModel.fromJson(result);
-        emit(AuthSucces(model: data));
+        emit(AuthSucces(model: result));
       } catch (e) {
         if (e is DioException) {
-          final errorText = ErrorModel.fromJson(e.response!.data);
+          final errorText =
+              ErrorModel.fromJson(e.response?.data ?? <String, dynamic>{});
           emit(
             AuthError(
-              error: errorText.error!.message ?? " ",
+              error: errorText.error?.message ?? "",
             ),
           );
         } else {
