@@ -58,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  AppSvgs.contacts,
+                  AppSvgs.contacts,   
+
+
                   width: width,
                   height: height,
                   colorFilter: ColorFilter.mode(
@@ -76,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       _selectedPageIndex == 2 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),
                 ),
+                
                 label: "Settings",
               ),
             ],
