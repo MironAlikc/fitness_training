@@ -16,7 +16,7 @@ class AuthRepositories {
         "usertoken/issue",
         data: {
           "username": username,
-          "password": password,
+          "password": password,   
         },
       );
 
