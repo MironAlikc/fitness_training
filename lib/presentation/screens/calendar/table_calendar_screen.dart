@@ -53,10 +53,8 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.b,
       appBar: AppBar(
         leadingWidth: 70,
-        //    backgroundColor: Colors.grey,
         elevation: 0,
         leading: IconButton(
           icon: Image.asset(
