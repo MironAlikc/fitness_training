@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fitness_training/data/models/client_model.dart';
+import 'package:fitness_training/core/resources/resources.dart';
+import 'package:fitness_training/core/router/router.dart';
+import 'package:fitness_training/domain/models/client_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
 import 'package:fitness_training/presentation/widgets/tab_bar_training_widget.dart';
 import 'package:fitness_training/presentation/widgets/user_cart_widget.dart';
-import 'package:fitness_training/resources/resources.dart';
-import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -48,7 +48,7 @@ class ProgramScreen extends StatelessWidget {
               SizedBox(height: screenWidth > 600 ? 50 : 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ButtonWidget( 
+                child: ButtonWidget(
                   onPressed: () {
                     AutoRouter.of(context).push(
                       const CreateProgramRoute(),

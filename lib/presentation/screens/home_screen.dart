@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness_training/core/resources/resources.dart';
+import 'package:fitness_training/core/router/router.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
-import 'package:fitness_training/resources/resources.dart';
-import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -58,9 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  AppSvgs.contacts,   
-
-
+                  AppSvgs.contacts,
                   width: width,
                   height: height,
                   colorFilter: ColorFilter.mode(
@@ -78,7 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       _selectedPageIndex == 2 ? _activeColor : _inactiveColor,
                       BlendMode.srcIn),
                 ),
-                
                 label: "Settings",
               ),
             ],

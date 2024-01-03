@@ -1,5 +1,5 @@
 import 'package:fitness_training/presentation/widgets/settings_camers_widget.dart';
-import 'package:fitness_training/resources/resources.dart';
+import 'package:fitness_training/core/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class ImageUserWidget extends StatelessWidget {

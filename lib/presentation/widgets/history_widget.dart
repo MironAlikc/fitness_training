@@ -1,4 +1,4 @@
-import 'package:fitness_training/data/models/history_training_model.dart';
+import 'package:fitness_training/domain/models/history_training_model.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

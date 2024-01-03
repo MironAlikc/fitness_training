@@ -1,9 +1,9 @@
-import 'package:fitness_training/data/models/appointment_model.dart';
+import 'package:fitness_training/domain/models/appointment_model.dart';
 import 'package:flutter/material.dart';
 
 class ListCalendarWidget extends StatelessWidget {
   const ListCalendarWidget({
-    required this.onTap, 
+    required this.onTap,
     super.key,
     required this.appointment,
   });

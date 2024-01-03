@@ -1,12 +1,14 @@
+import 'package:fitness_training/data/models/pagination_model.dart';
+
 class GetClientsModel {
-  PaginationResponse? paginationResponse;
+  PaginationModel? paginationResponse;
   List<Clients>? clients;
 
   GetClientsModel({this.paginationResponse, this.clients});
 
   GetClientsModel.fromJson(Map<String, dynamic> json) {
     paginationResponse = json['PaginationResponse'] != null
-        ? PaginationResponse.fromJson(json['PaginationResponse'])
+        ? PaginationModel.fromJson(json['PaginationResponse'])
         : null;
     if (json['Clients'] != null) {
       clients = <Clients>[];
@@ -28,41 +30,12 @@ class GetClientsModel {
   }
 }
 
-class PaginationResponse {
-  int? requestedLimit;
-  int? requestedOffset;
-  int? pageSize;
-  int? totalResults;
-
-  PaginationResponse(
-      {this.requestedLimit,
-      this.requestedOffset,
-      this.pageSize,
-      this.totalResults});
-
-  PaginationResponse.fromJson(Map<String, dynamic> json) {
-    requestedLimit = json['RequestedLimit'];
-    requestedOffset = json['RequestedOffset'];
-    pageSize = json['PageSize'];
-    totalResults = json['TotalResults'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['RequestedLimit'] = requestedLimit;
-    data['RequestedOffset'] = requestedOffset;
-    data['PageSize'] = pageSize;
-    data['TotalResults'] = totalResults;
-    return data;
-  }
-}
-
 class Clients {
   SuspensionInfo? suspensionInfo;
-  String? appointmentGenderPreference;
   String? birthDate;
   String? country;
   String? creationDate;
+  String? appointmentGenderPreference;
   List<CustomClientFields>? customClientFields;
   ClientCreditCard? clientCreditCard;
   List<ClientIndexes>? clientIndexes;

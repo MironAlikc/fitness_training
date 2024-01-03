@@ -1,6 +1,7 @@
 import "dart:async";
+
 import "package:auto_route/auto_route.dart";
-import "package:fitness_training/resources/resources.dart";
+import "package:fitness_training/core/resources/resources.dart";
 import "package:flutter/material.dart";
 
 class StopwatchTimerScreens extends StatefulWidget {

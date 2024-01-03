@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:fitness_training/data/models/appointment_model.dart';
+import 'package:fitness_training/domain/models/appointment_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
