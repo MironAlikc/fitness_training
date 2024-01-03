@@ -1,13 +1,13 @@
 import "package:auto_route/auto_route.dart";
-import "package:fitness_training/data/models/history_training_model.dart";
-import "package:fitness_training/data/models/program_settings_model.dart";
+import "package:fitness_training/core/resources/resources.dart";
+import "package:fitness_training/domain/models/history_training_model.dart";
+import "package:fitness_training/domain/models/program_settings_model.dart";
 import "package:fitness_training/presentation/screens/contacts/stopwatch_timer/stopwatch_timer_screens.dart";
 import "package:fitness_training/presentation/themes/app_fonts.dart";
 import "package:fitness_training/presentation/widgets/button_widget.dart";
 import "package:fitness_training/presentation/widgets/custom_timer_widget.dart";
 import "package:fitness_training/presentation/widgets/history_widget.dart";
 import "package:fitness_training/presentation/widgets/program_dialog_widget.dart";
-import "package:fitness_training/resources/resources.dart";
 import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 

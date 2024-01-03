@@ -1,4 +1,4 @@
-import 'package:fitness_training/data/models/client_model.dart';
+import 'package:fitness_training/domain/models/client_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/text_parameters_user_widget.dart';

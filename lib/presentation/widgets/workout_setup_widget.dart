@@ -1,8 +1,8 @@
 import 'package:fitness_training/core/const.dart';
-import 'package:fitness_training/data/models/program_settings_model.dart';
+import 'package:fitness_training/core/resources/resources.dart';
+import 'package:fitness_training/domain/models/program_settings_model.dart';
 import 'package:fitness_training/presentation/widgets/program_information_widget.dart';
 import 'package:fitness_training/presentation/widgets/shared_prefs_widget.dart';
-import 'package:fitness_training/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutSetupWidget extends StatelessWidget {

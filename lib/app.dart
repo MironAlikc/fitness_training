@@ -1,9 +1,9 @@
-import 'package:fitness_training/bloc/bloc_auth/auth_bloc.dart';
+import 'package:fitness_training/core/bloc/bloc_auth/auth_bloc.dart';
 import 'package:fitness_training/core/dio_settings/dio_settings.dart';
+import 'package:fitness_training/core/router/router.dart';
 import 'package:fitness_training/data/repositories/auth_repositories.dart';
 import 'package:fitness_training/presentation/themes/theme.dart';
 import 'package:fitness_training/presentation/widgets/shared_prefs_widget.dart';
-import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

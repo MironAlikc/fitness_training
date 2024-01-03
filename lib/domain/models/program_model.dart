@@ -1,5 +1,5 @@
-import 'package:fitness_training/data/models/program_settings_model.dart';
-import 'package:fitness_training/data/models/training_apparatus_model.dart';
+import 'package:fitness_training/domain/models/program_settings_model.dart';
+import 'package:fitness_training/domain/models/training_apparatus_model.dart';
 
 class ProgramModel {
   final String name;

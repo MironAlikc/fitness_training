@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fitness_training/data/models/training_apparatus_model.dart';
+import 'package:fitness_training/core/resources/resources.dart';
+import 'package:fitness_training/core/router/router.dart';
+import 'package:fitness_training/domain/models/training_apparatus_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
-import 'package:fitness_training/resources/resources.dart';
-import 'package:fitness_training/router/router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

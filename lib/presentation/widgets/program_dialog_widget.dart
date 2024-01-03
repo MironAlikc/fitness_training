@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:fitness_training/data/models/program_settings_model.dart';
+import 'package:fitness_training/core/resources/resources.dart';
+import 'package:fitness_training/domain/models/program_settings_model.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
-
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
-import 'package:fitness_training/presentation/widgets/workout_setup_widget.dart';
 import 'package:fitness_training/presentation/widgets/settings_for_widget.dart';
-import 'package:fitness_training/resources/resources.dart';
+import 'package:fitness_training/presentation/widgets/workout_setup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

@@ -1,4 +1,4 @@
-import 'package:fitness_training/data/models/program_model.dart';
+import 'package:fitness_training/domain/models/program_model.dart';
 import 'package:flutter/material.dart';
 
 class TrainingProgramWidget extends StatelessWidget {
