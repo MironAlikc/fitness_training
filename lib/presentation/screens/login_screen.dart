@@ -82,13 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ButtonWidget(
                   onPressed: () async {
-                    final SharedPreferences prefs = SharedPrefsWidget.prefs;
-                    await prefs.setString(
-                        AppConsts.userName, controlerEmail.text);
-                    await prefs.setString(
-                        AppConsts.password, controlerPassword.text);
-                    await prefs.setBool(AppConsts.isLogined, true);
-                    setState(() {});
+                    // final SharedPreferences prefs = SharedPrefsWidget.prefs;
+                    // await prefs.setString(
+                    //     AppConsts.userName, controlerEmail.text);
+                    // await prefs.setString(
+                    //     AppConsts.password, controlerPassword.text);
+                    // await prefs.setBool(AppConsts.isLogined, true);
+                    // setState(() {});
                     BlocProvider.of<AuthBloc>(context).add(
                       GetTokenEvent(
                         login: controlerEmail.text,

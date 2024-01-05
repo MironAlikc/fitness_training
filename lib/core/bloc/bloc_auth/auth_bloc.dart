@@ -1,7 +1,7 @@
 import "package:dio/dio.dart";
 import "package:fitness_training/data/models/error_model.dart";
 import "package:fitness_training/data/models/token_model.dart";
-import "package:fitness_training/data/repositories/auth_repositories.dart";
+import 'package:fitness_training/data/repositories/mindbody_repository.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
@@ -9,7 +9,7 @@ part "auth_event.dart";
 part "auth_state.dart";
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepositories repo;
+  final MindbodyRepository repo;
   late SharedPreferences prefs;
   AuthBloc({required this.repo}) : super(AuthInitial()) {
     on<GetTokenEvent>((event, emit) async {
@@ -19,6 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           username: event.login,
           password: event.password,
         );
+
+        repo.getClients().then((value) => print(value.toString()));
 
         emit(AuthSucces(model: result));
       } catch (e) {

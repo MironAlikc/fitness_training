@@ -37,11 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(
       const Duration(seconds: 2),
     );
-    if (isLogined) {
-      AutoRouter.of(context).push(const HomeRoute());
-    } else {
-      AutoRouter.of(context).push(const LoginRoute());
-    }
+    // if (isLogined) {
+    //   AutoRouter.of(context).push(const HomeRoute());
+    // } else {
+       AutoRouter.of(context).push(const LoginRoute());
+    // }
   }
 
   @override

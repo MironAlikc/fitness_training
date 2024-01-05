@@ -1,12 +1,12 @@
 import 'package:fitness_training/data/models/pagination_model.dart';
 
-class GetClientsModel {
+class ClientsModel {
   PaginationModel? paginationResponse;
   List<Clients>? clients;
 
-  GetClientsModel({this.paginationResponse, this.clients});
+  ClientsModel({this.paginationResponse, this.clients});
 
-  GetClientsModel.fromJson(Map<String, dynamic> json) {
+  ClientsModel.fromJson(Map<String, dynamic> json) {
     paginationResponse = json['PaginationResponse'] != null
         ? PaginationModel.fromJson(json['PaginationResponse'])
         : null;
@@ -31,9 +31,9 @@ class GetClientsModel {
 }
 
 class Clients {
-  SuspensionInfo? suspensionInfo;
-  String? birthDate;
-  String? country;
+  // SuspensionInfo? suspensionInfo;
+  //String? birthDate;
+  //String? country;
   String? creationDate;
   String? appointmentGenderPreference;
   List<CustomClientFields>? customClientFields;
@@ -91,10 +91,11 @@ class Clients {
   String? lockerNumber;
 
   Clients(
-      {this.suspensionInfo,
+      {
+      //this.suspensionInfo,
       this.appointmentGenderPreference,
-      this.birthDate,
-      this.country,
+      //this.birthDate,
+      // this.country,
       this.creationDate,
       this.customClientFields,
       this.clientCreditCard,
@@ -151,12 +152,12 @@ class Clients {
       this.lockerNumber});
 
   Clients.fromJson(Map<String, dynamic> json) {
-    suspensionInfo = json['SuspensionInfo'] != null
-        ? SuspensionInfo.fromJson(json['SuspensionInfo'])
-        : null;
+    //  suspensionInfo = json['SuspensionInfo'] != null
+    // ? SuspensionInfo.fromJson(json['SuspensionInfo'])
+    // : null;
     appointmentGenderPreference = json['AppointmentGenderPreference'];
-    birthDate = json['BirthDate'];
-    country = json['Country'];
+    // birthDate = json['BirthDate'];
+    // country = json['Country'];
     creationDate = json['CreationDate'];
     if (json['CustomClientFields'] != null) {
       customClientFields = <CustomClientFields>[];
@@ -243,12 +244,12 @@ class Clients {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (suspensionInfo != null) {
-      data['SuspensionInfo'] = suspensionInfo!.toJson();
-    }
+    // if (suspensionInfo != null) {
+    //   data['SuspensionInfo'] = suspensionInfo!.toJson();
+    // }
     data['AppointmentGenderPreference'] = appointmentGenderPreference;
-    data['BirthDate'] = birthDate;
-    data['Country'] = country;
+    // data['BirthDate'] = birthDate;
+    // data['Country'] = country;
     data['CreationDate'] = creationDate;
     if (customClientFields != null) {
       data['CustomClientFields'] =
@@ -600,10 +601,10 @@ class HomeLocation {
   double? tax1;
   double? tax2;
   double? tax3;
-  int? tax4;
-  int? tax5;
+  double? tax4;
+  double? tax5;
   int? totalNumberOfRatings;
-  int? averageRating;
+  double? averageRating;
   int? totalNumberOfDeals;
 
   HomeLocation(
