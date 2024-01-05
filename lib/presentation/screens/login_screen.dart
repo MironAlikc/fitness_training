@@ -2,16 +2,13 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/core/bloc/bloc_auth/auth_bloc.dart';
-import 'package:fitness_training/core/const.dart';
 import 'package:fitness_training/core/resources/resources.dart';
 import 'package:fitness_training/core/router/router.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:fitness_training/presentation/widgets/button_widget.dart';
-import 'package:fitness_training/presentation/widgets/shared_prefs_widget.dart';
 import 'package:fitness_training/presentation/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
