@@ -33,15 +33,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void routing() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLogined = prefs.getBool(AppConsts.isLogined) ?? false;
+    String? accessToken = prefs.getString(AppConsts.accessToken);
     await Future.delayed(
       const Duration(seconds: 2),
     );
-    // if (isLogined) {
-    //   AutoRouter.of(context).push(const HomeRoute());
-    // } else {
-       AutoRouter.of(context).push(const LoginRoute());
-    // }
+    if (accessToken != null && accessToken.isNotEmpty) {
+      AutoRouter.of(context).push(const HomeRoute());
+    } else {
+      AutoRouter.of(context).push(const LoginRoute());
+    }
   }
 
   @override
