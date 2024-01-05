@@ -9,4 +9,6 @@ class AppConsts {
   static const String pin = 'pin';
   static const String back = 'body';
   static const String handle = 'handle';
+  static const int apiVersion = 6;
+   static const String siteId = '-99';
 }
