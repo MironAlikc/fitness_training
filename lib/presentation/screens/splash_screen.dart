@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:fitness_training/core/const.dart';
 import 'package:fitness_training/core/resources/resources.dart';
 import 'package:fitness_training/core/router/router.dart';
+import 'package:fitness_training/data/models/token_model.dart';
+import 'package:fitness_training/data/repositories/preferences_repository.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore_for_file: use_build_context_synchronously
 @RoutePage()
@@ -22,29 +22,39 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     routing();
-    Timer(
-      const Duration(seconds: 2),
-      () => AutoRouter.of(context).push(
-        const LoginRoute(),
-      ),
-    );
+    // Timer(
+    //   const Duration(seconds: 2),
+    //   () => AutoRouter.of(context).push(
+    //     const LoginRoute(),
+    //   ),
+    // );
     super.initState();
   }
 
   void routing() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? accessToken = prefs.getString(AppConsts.accessToken);
-    await Future.delayed(
-      const Duration(seconds: 2),
-    );
-    if (accessToken != null && accessToken.isNotEmpty) {
+    final prefsRepo = PreferencesRepository();
+    final token = await prefsRepo.getToken();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (token != null) {
       AutoRouter.of(context).push(const HomeRoute());
     } else {
       AutoRouter.of(context).push(const LoginRoute());
     }
   }
-
-  
+  // void routing() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? accessToken = prefs.getString(AppConsts.accessToken);
+  //   await Future.delayed(
+  //     const Duration(seconds: 2),
+  //   );
+  //   if (accessToken != null && accessToken.isNotEmpty) {
+  //     AutoRouter.of(context).push(const HomeRoute());
+  //   } else {
+  //     AutoRouter.of(context).push(const LoginRoute());
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
