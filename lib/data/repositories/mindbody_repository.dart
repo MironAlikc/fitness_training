@@ -30,4 +30,5 @@ class MindbodyRepository {
               .then((value) {
             return ClientsModel.fromJson(value.data);
           }));
+          
 }
