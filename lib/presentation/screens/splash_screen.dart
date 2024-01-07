@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness_training/core/resources/resources.dart';
 import 'package:fitness_training/core/router/router.dart';
-import 'package:fitness_training/data/models/token_model.dart';
 import 'package:fitness_training/data/repositories/preferences_repository.dart';
 import 'package:fitness_training/presentation/themes/app_colors.dart';
 import 'package:fitness_training/presentation/themes/app_fonts.dart';
@@ -43,6 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
       AutoRouter.of(context).push(const LoginRoute());
     }
   }
+  
   // void routing() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   String? accessToken = prefs.getString(AppConsts.accessToken);
