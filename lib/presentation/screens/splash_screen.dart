@@ -42,6 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
       AutoRouter.of(context).push(const LoginRoute());
     }
   }
+  
   // void routing() async {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   String? accessToken = prefs.getString(AppConsts.accessToken);
