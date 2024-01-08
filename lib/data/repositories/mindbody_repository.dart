@@ -7,6 +7,7 @@ class MindbodyRepository {
   MindbodyRepository({required this.dio});
   final Dio dio;
   final _preferences = PreferencesRepository();
+
   Future<TokenModel> login({
     required String username,
     required String password,
@@ -21,6 +22,7 @@ class MindbodyRepository {
         final tokenModel = TokenModel.fromJson(value.data);
         return _preferences.saveToken(tokenModel).then((_) => tokenModel);
       });
+      
   Future<ClientsModel> getClients() =>
       _preferences.getToken().then((value) => dio
               .get("client/clients",
